@@ -1,28 +1,18 @@
 import Layout from "./layout/layout";
 import Login from "./login";
-import { useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import PollConfig from "./edit-poll/poll-config";
 import PollList from "./my-polls/poll-list";
 import PollFill from "./fill-out-poll/poll-fill";
 import { useEffect } from "react";
-import { setUser } from "../redux/userSlice";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const Routes = () => {
-    const user = useSelector((state) => state.user);
-    const dispatch = useDispatch();
+const Routes = ({ user }) => {
     const history = useHistory();
     useEffect(() => {
-        const userJSON = sessionStorage.getItem("user");
-        if (userJSON) {
-            const parsedUser = JSON.parse(userJSON);
-            dispatch(setUser(parsedUser));
-        } else {
-            history.push("/login");
-        }
-    }, [dispatch, history]);
+        if (user) return;
+        history.push("/login");
+    }, [history, user]);
 
     return (
         <Layout>

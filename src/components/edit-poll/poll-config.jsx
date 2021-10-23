@@ -15,7 +15,9 @@ const PollConfig = ({ action }) => {
     const handleSubmit = () => {};
     return (
         <div>
-            <h1 className={styles.headerText}>Create a poll</h1>
+            <h1 className={styles.headerText}>
+                {action === "new" ? "Create a poll" : "Edit poll"}
+            </h1>
             <label>
                 Question:
                 <input
@@ -28,7 +30,7 @@ const PollConfig = ({ action }) => {
             </label>
             <label>
                 Answer option:
-                {Object.keys(answers).map((answerKey, index) => (
+                {Object.keys(answers).map((answerKey) => (
                     <input
                         key={answerKey}
                         className="formInput"

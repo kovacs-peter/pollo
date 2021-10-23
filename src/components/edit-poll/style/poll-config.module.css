@@ -1,5 +1,6 @@
 .headerText {
     text-align: center;
+    margin-bottom: 2rem;
 }
 .questionInput {
     text-align: center;
@@ -22,4 +23,5 @@
 }
 .submitButton {
     background: linear-gradient(145deg, #00cedd, #00c0ce);
+    float: right;
 }

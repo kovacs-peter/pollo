@@ -6,13 +6,25 @@ import PollList from "./my-polls/poll-list";
 import PollFill from "./fill-out-poll/poll-fill";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { setUser } from "../redux/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const Routes = ({ user }) => {
+const Routes = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
+
+    const user = useSelector((state) => {
+        if (state.user.userData) JSON.parse(state.user.userData);
+    });
     useEffect(() => {
         if (user) return;
-        history.push("/login");
-    }, [history, user]);
+        const userJSON = localStorage.getItem("user");
+        if (userJSON) {
+            dispatch(setUser(userJSON));
+        } else {
+            history.push("/login");
+        }
+    }, [dispatch, user, history]);
 
     return (
         <Layout>

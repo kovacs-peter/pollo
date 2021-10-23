@@ -16,6 +16,7 @@ const Login = () => {
     useEffect(() => {
         getRedirectResult(auth)
             .then((result) => {
+                if (!result?.user) return;
                 const json = JSON.stringify(result.user);
                 dispatch(setUser(json));
                 localStorage.setItem("user", json);
@@ -29,10 +30,6 @@ const Login = () => {
             })
             .catch((error) => {
                 console.log(error);
-            })
-
-            .catch((error) => {
-                console.log(error.code);
             });
         // eslint-disable-next-line
     }, []);

@@ -1,0 +1,25 @@
+.headerText {
+    text-align: center;
+}
+.questionInput {
+    text-align: center;
+}
+.button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1rem;
+    border-radius: 2rem;
+    color: #fff;
+    font-weight: 300;
+    font-size: 1.2rem;
+    padding: 1rem;
+    box-shadow: 5px 5px 10px #d3d3d3, -5px -5px 10px #ffffff;
+}
+.addButton {
+    background: linear-gradient(145deg, #00cc0b, #00bd09);
+}
+.submitButton {
+    background: linear-gradient(145deg, #00cedd, #00c0ce);
+}

@@ -1,0 +1,28 @@
+.centerChildren {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.polLogo {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    color: #00ccbe;
+}
+
+.mainContent {
+    width: 80%;
+    max-width: 40rem;
+    height: 70%;
+    max-height: 70rem;
+    border-radius: 2rem;
+    border-radius: 50px;
+    background: #f8f8f8;
+    box-shadow: 8px 8px 17px #d3d3d3, -8px -8px 17px #ffffff;
+    padding: 3em;
+    margin-bottom: 3rem;
+}

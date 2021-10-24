@@ -8,10 +8,12 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { setUser } from "../redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const Routes = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const { pathname } = useLocation();
 
     const user = useSelector((state) => {
         if (state.user.userData) JSON.parse(state.user.userData);
@@ -22,8 +24,9 @@ const Routes = () => {
         if (userJSON) {
             dispatch(setUser(userJSON));
         } else {
-            history.push("/login");
+            history.push(`/login?from=${pathname}`);
         }
+        // eslint-disable-next-line
     }, [dispatch, user, history]);
 
     return (

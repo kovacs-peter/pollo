@@ -6,13 +6,14 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { setDoc, doc } from "firebase/firestore";
 import { firestore } from "../api/firebase";
+import { useLocation } from "react-router-dom";
 
 const provider = new GoogleAuthProvider(auth);
 
 const Login = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const { search } = useLocation();
     useEffect(() => {
         getRedirectResult(auth)
             .then((result) => {
@@ -26,7 +27,8 @@ const Login = () => {
                     FullName: result.user.displayName,
                     photoURL: result.user.photoURL,
                 });
-                history.push("/");
+
+                history.push(search.split("?from=")[1]);
             })
             .catch((error) => {
                 console.log(error);

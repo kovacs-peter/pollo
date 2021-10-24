@@ -1,20 +1,27 @@
-import { useState } from "react";
-import styles from "./style/poll-config.module.css";
-import { addDoc, collection } from "firebase/firestore";
-import { firestore } from "../../api/firebase";
+import { useState, useEffect } from "react";
+import styles from "./style/poll-config.module.scss";
 import { useSelector } from "react-redux";
 import LinkPage from "./link-page";
 import Option from "./option";
+import { useCreatePoll } from "../../hooks/useCreatePoll";
 
 const PollConfig = () => {
     const user = useSelector((state) => {
         if (state.user.userData) return JSON.parse(state.user.userData);
     });
+
     const [question, setQuestion] = useState("");
     const [passNeeded, setPassNeeded] = useState(false);
     const [pollPassword, setPollPassword] = useState("");
     const [answers, setAnswers] = useState({ option0: "" });
     const [pollId, setpollId] = useState(null);
+    const { mutate: createPoll, isLoading, isSuccess, data } = useCreatePoll();
+
+    useEffect(() => {
+        if (isSuccess) {
+            setpollId(data.id);
+        }
+    }, [isSuccess, data]);
 
     const handleAdd = (event) => {
         event.stopPropagation();
@@ -41,8 +48,7 @@ const PollConfig = () => {
             question: question,
             created_by: user.uid,
         };
-
-        addDoc(collection(firestore, "polls"), params).then((res) => setpollId(res.id));
+        createPoll(params);
     };
 
     if (pollId) return <LinkPage id={pollId} />;
@@ -87,9 +93,10 @@ const PollConfig = () => {
                 <div>
                     <label>
                         Options to select:
-                        {Object.keys(answers).map((answerKey, i) => (
+                        {Object.keys(answers).map((answerKey) => (
                             <Option
                                 noRemove={Object.keys(answers).length === 1}
+                                count={Object.keys(answers).length}
                                 key={answerKey}
                                 name={answerKey}
                                 value={answers[answerKey]}
@@ -112,10 +119,20 @@ const PollConfig = () => {
                 </div>
             </div>
             <button
+                disabled={isLoading}
                 onClick={handleSubmit}
                 className={`${styles.submitButton} ${styles.button}`}
             >
-                SUMBIT POLL
+                {isLoading ? (
+                    <div className={styles.container}>
+                        <span className={styles.circle}></span>
+                        <span className={styles.circle}></span>
+                        <span className={styles.circle}></span>
+                        <span className={styles.circle}></span>
+                    </div>
+                ) : (
+                    "SUMBIT POLL"
+                )}
             </button>
         </div>
     );

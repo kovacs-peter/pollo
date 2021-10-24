@@ -23,8 +23,11 @@ h1 {
     border: none;
     outline: none;
     background: none;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border-radius: 3rem;
     background: #f8f8f8;
     box-shadow: 8px 8px 17px #d3d3d3, -8px -8px 17px #ffffff;
+}
+.formInput::placeholder {
+    font-size: 1rem;
 }

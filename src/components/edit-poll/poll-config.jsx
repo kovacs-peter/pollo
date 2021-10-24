@@ -5,11 +5,13 @@ import { firestore } from "../../api/firebase";
 import { useSelector } from "react-redux";
 import LinkPage from "./link-page";
 import Option from "./option";
+
 const PollConfig = () => {
     const user = useSelector((state) => {
         if (state.user.userData) return JSON.parse(state.user.userData);
     });
     const [question, setQuestion] = useState("");
+    const [passNeeded, setPassNeeded] = useState(false);
     const [pollPassword, setPollPassword] = useState("");
     const [answers, setAnswers] = useState({ option0: "" });
     const [pollId, setpollId] = useState(null);
@@ -46,7 +48,18 @@ const PollConfig = () => {
     if (pollId) return <LinkPage id={pollId} />;
     return (
         <div className={styles.flex}>
-            <h1 className={styles.headerText}>Create a poll</h1>
+            <h1 className={styles.headerText}>
+                Create a poll
+                <span
+                    aria-label="Protect the poll with a password"
+                    style={{ cursor: "pointer", fontSize: "1.6rem" }}
+                    onClick={() => {
+                        setPassNeeded((oldState) => !oldState);
+                    }}
+                >
+                    {passNeeded ? "🔒" : "🔓"}
+                </span>
+            </h1>
             <div>
                 <label style={{ width: "100%" }}>
                     Question:
@@ -59,16 +72,18 @@ const PollConfig = () => {
                         onChange={(event) => setQuestion(event.target.value)}
                     />
                 </label>
-                <label>
-                    Password:
-                    <input
-                        className="formInput"
-                        type="text"
-                        name="pollPassword"
-                        value={pollPassword}
-                        onChange={(event) => setPollPassword(event.target.value)}
-                    />
-                </label>
+                {passNeeded && (
+                    <label>
+                        Password:
+                        <input
+                            className="formInput"
+                            type="text"
+                            name="pollPassword"
+                            value={pollPassword}
+                            onChange={(event) => setPollPassword(event.target.value)}
+                        />
+                    </label>
+                )}
                 <div>
                     <label>
                         Options to select:

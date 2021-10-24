@@ -1,8 +1,9 @@
 .centerChildren {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: fit-content;
     display: flex;
     flex-direction: column;
+    padding: 5rem 0;
     align-items: center;
     justify-content: center;
 }
@@ -15,14 +16,12 @@
 }
 
 .mainContent {
-    width: 80%;
+    width: 70%;
     max-width: 40rem;
-    height: 70%;
-
+    min-height: 30rem;
     border-radius: 2rem;
     border-radius: 50px;
     background: #f8f8f8;
     box-shadow: 8px 8px 17px #d3d3d3, -8px -8px 17px #ffffff;
     padding: 3em;
-    margin-bottom: 3rem;
 }

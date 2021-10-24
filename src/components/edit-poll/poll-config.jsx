@@ -4,7 +4,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { firestore } from "../../api/firebase";
 import { useSelector } from "react-redux";
 import LinkPage from "./link-page";
-
+import Option from "./option";
 const PollConfig = () => {
     const user = useSelector((state) => {
         if (state.user.userData) return JSON.parse(state.user.userData);
@@ -20,6 +20,12 @@ const PollConfig = () => {
         const num = Object.keys(answers).length;
         const option = `option${num}`;
         setAnswers({ ...answers, [option]: "" });
+    };
+
+    const handleRemove = (key) => {
+        let modifyObject = { ...answers };
+        delete modifyObject[key];
+        setAnswers(modifyObject);
     };
 
     const handleSubmit = () => {
@@ -39,52 +45,57 @@ const PollConfig = () => {
 
     if (pollId) return <LinkPage id={pollId} />;
     return (
-        <div>
+        <div className={styles.flex}>
             <h1 className={styles.headerText}>Create a poll</h1>
-            <label>
-                Question:
-                <input
-                    className="formInput"
-                    type="text"
-                    name="question"
-                    value={question}
-                    onChange={(event) => setQuestion(event.target.value)}
-                />
-            </label>
-            <label>
-                Password:
-                <input
-                    className="formInput"
-                    type="text"
-                    name="pollPassword"
-                    value={pollPassword}
-                    onChange={(event) => setPollPassword(event.target.value)}
-                />
-            </label>
-            <label>
-                Answer option:
-                {Object.keys(answers).map((answerKey) => (
+            <div>
+                <label style={{ width: "100%" }}>
+                    Question:
                     <input
-                        key={answerKey}
                         className="formInput"
                         type="text"
-                        name={answerKey}
-                        value={answers[answerKey]}
-                        onInput={(event) =>
-                            setAnswers({
-                                ...answers,
-                                [answerKey]: event.target.value,
-                            })
-                        }
+                        name="question"
+                        placeholder="What is the meaing of life?"
+                        value={question}
+                        onChange={(event) => setQuestion(event.target.value)}
                     />
-                ))}
-            </label>
-            <button
-                onClick={handleAdd}
-                className={`${styles.addButton} ${styles.button}`}
-            >
-                ADD OPTION
-            </button>
+                </label>
+                <label>
+                    Password:
+                    <input
+                        className="formInput"
+                        type="text"
+                        name="pollPassword"
+                        value={pollPassword}
+                        onChange={(event) => setPollPassword(event.target.value)}
+                    />
+                </label>
+                <div>
+                    <label>
+                        Options to select:
+                        {Object.keys(answers).map((answerKey, i) => (
+                            <Option
+                                noRemove={Object.keys(answers).length === 1}
+                                key={answerKey}
+                                name={answerKey}
+                                value={answers[answerKey]}
+                                onInput={(event) =>
+                                    setAnswers({
+                                        ...answers,
+                                        [answerKey]: event.target.value,
+                                    })
+                                }
+                                handleRemove={() => handleRemove(answerKey)}
+                            />
+                        ))}
+                    </label>
+                    <button
+                        onClick={handleAdd}
+                        className={`${styles.addButton} ${styles.button}`}
+                    >
+                        +
+                    </button>
+                </div>
+            </div>
             <button
                 onClick={handleSubmit}
                 className={`${styles.submitButton} ${styles.button}`}

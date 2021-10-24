@@ -5,7 +5,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: #f8f8f8;
-    color: #434b4d;
+    color: #898f99;
     font-size: 1.2rem;
 }
 h1 {
@@ -14,10 +14,12 @@ h1 {
     font-size: 2rem;
 }
 .formInput {
-    width: 100%;
+    color: #4c4e52;
+    font-weight: 200;
+    width: 95%;
     height: 3rem;
-    padding: 0 0.8rem;
-    margin: 1rem 2rem 1rem 0;
+    padding: 0 1rem;
+    margin: 1rem 0;
     border: none;
     outline: none;
     background: none;

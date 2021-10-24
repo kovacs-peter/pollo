@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import LinkPage from "./link-page";
 import Option from "./option";
 import { useCreatePoll } from "../../hooks/useCreatePoll";
+import Loader from "../misc/loader-without-style";
 
 const PollConfig = () => {
     const user = useSelector((state) => {
@@ -123,16 +124,7 @@ const PollConfig = () => {
                 onClick={handleSubmit}
                 className={`${styles.submitButton} ${styles.button}`}
             >
-                {isLoading ? (
-                    <div className={styles.container}>
-                        <span className={styles.circle}></span>
-                        <span className={styles.circle}></span>
-                        <span className={styles.circle}></span>
-                        <span className={styles.circle}></span>
-                    </div>
-                ) : (
-                    "SUMBIT POLL"
-                )}
+                {isLoading ? <Loader styles={styles} /> : "SUMBIT POLL"}
             </button>
         </div>
     );

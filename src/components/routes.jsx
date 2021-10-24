@@ -32,7 +32,7 @@ const Routes = () => {
     return (
         <Layout>
             <Switch>
-                <Route path={"/:id(\\d+)"} exact strict component={PollFill} />
+                <Route path={"/:id"} exact strict component={PollFill} />
                 <Route path="/new" exact strict component={PollConfig} />
                 <Route path={"/login"} exact strict component={Login} />
                 <Route path={"/"} exact strict component={PollList} />

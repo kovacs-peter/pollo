@@ -4,6 +4,8 @@ import { Switch, Route } from "react-router-dom";
 import PollConfig from "./edit-poll/poll-config";
 import PollList from "./my-polls/poll-list";
 import PollFill from "./fill-out-poll/poll-fill";
+import PollResults from "./poll-results/poll-results";
+import NotFound from "./misc/not-found";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { setUser } from "../redux/userSlice";
@@ -34,8 +36,10 @@ const Routes = () => {
             <Switch>
                 <Route path="/new" exact strict component={PollConfig} />
                 <Route path={"/:id"} exact strict component={PollFill} />
+                <Route path={"/:id/answers"} exact strict component={PollResults} />
                 <Route path={"/login"} exact strict component={Login} />
                 <Route path={"/"} exact strict component={PollList} />
+                <Route component={NotFound} />
             </Switch>
         </Layout>
     );

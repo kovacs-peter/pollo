@@ -1,7 +1,9 @@
 import { usePoll } from "../../hooks/usePoll";
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation, useHistory, Redirect } from "react-router-dom";
 import styles from "./style/poll-fill.module.scss";
+import configStyles from "../edit-poll/style/poll-config.module.scss";
+
 import Loader from "../misc/loader-without-style";
 import PollPassword from "./poll-password";
 import OptionRadio from "./option-radio";
@@ -12,12 +14,20 @@ const PollFill = () => {
     const [passCorrect, setPassCorrect] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
     const { pathname } = useLocation();
-    const pollUid = pathname.slice(1);
-    const { data: poll, isLoading } = usePoll(pollUid);
+    const pollUid = pathname.split("/")[1];
+
+    const history = useHistory();
+    const { data: poll, isLoading: pollLoading } = usePoll(pollUid);
     const user = useSelector((state) => {
         if (state.user.userData) return JSON.parse(state.user.userData);
     });
-    const { mutate } = useUpdatePoll();
+    const { mutate, isSuccess, isLoading: mutationRunning } = useUpdatePoll();
+
+    useEffect(() => {
+        if (!isSuccess) return;
+        history.push(`/${pollUid}/answers`);
+        // eslint-disable-next-line
+    }, [isSuccess]);
 
     const handleAnswer = () => {
         mutate({
@@ -27,12 +37,16 @@ const PollFill = () => {
         });
     };
 
-    if (isLoading)
+    if (pollLoading || !user)
         return (
             <div className={styles.loaderContainer}>
                 <Loader styles={styles} />
             </div>
         );
+    if (!pollLoading && !poll) return <Redirect to="/" />;
+    if (poll.answeredBy.map((ans) => ans.id).includes(user.uid))
+        return <Redirect to={`${pollUid}/answers`} />;
+
     if (poll.password && !passCorrect)
         return (
             <PollPassword passInput={(val) => setPassCorrect(val === poll.password)} />
@@ -42,7 +56,7 @@ const PollFill = () => {
             <div>
                 <h1 className={styles.title}>{poll.question}</h1>
                 <div className={styles.optionsContainer}>
-                    {Object.keys(poll.options).map((option, index) => (
+                    {Object.keys(poll.options).map((option) => (
                         <OptionRadio
                             onCheck={() => setSelectedOption(option)}
                             key={option}
@@ -60,7 +74,7 @@ const PollFill = () => {
                         !(typeof selectedOption === "string") ? styles.disabled : ""
                     } ${styles.answerButton}`}
                 >
-                    ANSWER
+                    {mutationRunning ? <Loader styles={configStyles} /> : "ANSWER"}
                 </button>
                 <div onClick={handleAnswer} className={styles.noAnswer}>
                     Bring me the answers

@@ -39,15 +39,18 @@ const PollConfig = () => {
     };
 
     const handleSubmit = () => {
-        const optionsArray = Object.values(answers).map((option) => ({
-            option: option,
-            chosen_by: [],
-        }));
+        const optionsObject = {};
+        Object.values(answers).forEach(
+            (option) =>
+                (optionsObject[option] = {
+                    chosenBy: [],
+                })
+        );
         const params = {
-            options: optionsArray,
+            options: optionsObject,
             password: pollPassword,
             question: question,
-            created_by: user.uid,
+            userId: user.uid,
         };
         createPoll(params);
     };

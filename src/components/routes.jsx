@@ -16,7 +16,7 @@ const Routes = () => {
     const { pathname } = useLocation();
 
     const user = useSelector((state) => {
-        if (state.user.userData) JSON.parse(state.user.userData);
+        if (state.user.userData) return JSON.parse(state.user.userData);
     });
     useEffect(() => {
         if (user) return;
@@ -32,8 +32,8 @@ const Routes = () => {
     return (
         <Layout>
             <Switch>
-                <Route path={"/:id"} exact strict component={PollFill} />
                 <Route path="/new" exact strict component={PollConfig} />
+                <Route path={"/:id"} exact strict component={PollFill} />
                 <Route path={"/login"} exact strict component={Login} />
                 <Route path={"/"} exact strict component={PollList} />
             </Switch>

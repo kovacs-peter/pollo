@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: center;
 }
-
 .container {
     height: 15px;
     width: 105px;
@@ -35,24 +34,120 @@
             animation: grow 500ms linear 0s infinite reverse;
         }
     }
+
+    @keyframes grow {
+        from {
+            transform: scale(0, 0);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1, 1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes move {
+        from {
+            transform: translateX(0px);
+        }
+        to {
+            transform: translateX(45px);
+        }
+    }
 }
 
-@keyframes grow {
-    from {
-        transform: scale(0, 0);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1, 1);
-        opacity: 1;
-    }
+.title {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 3rem;
 }
 
-@keyframes move {
-    from {
-        transform: translateX(0px);
+.optionContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    //justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.optionText {
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 100%;
+    height: 3rem;
+    border-radius: 1.5rem;
+    background: #f8f8f8;
+    box-shadow: 8px 8px 17px #d3d3d3, -5px -5px 10px #ffffff;
+    // box-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
+}
+.optionCheckbox {
+    &:hover {
+        background: linear-gradient(145deg, #dfdfdf, #fff);
     }
-    to {
-        transform: translateX(45px);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    min-width: 3rem;
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, #fff, #dfdfdf);
+    box-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
+}
+.activeCheckbox {
+    justify-content: center;
+    height: 3rem;
+    min-width: 3rem;
+    border-radius: 1.5rem;
+    box-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
+    background: linear-gradient(145deg, #0ee7c3, #06caaa) !important;
+}
+.answerButton {
+    @media only screen and (max-width: 768px) {
+        width: 100% !important;
     }
+    &:hover {
+        background: linear-gradient(145deg, rgb(84, 94, 235), #0b42db);
+    }
+
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    border-radius: 2rem;
+    color: #fff;
+    font-weight: 200;
+    font-size: 1.2rem;
+    padding: 1rem;
+    box-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
+    background: linear-gradient(145deg, rgb(92, 102, 255), #0c49f1);
+    color: #fff;
+    width: fit-content;
+    min-height: 3.5rem;
+    min-width: 9.5rem;
+}
+.disabled.answerButton {
+    color: #4c4e52;
+
+    cursor: default;
+    background: linear-gradient(
+        145deg,
+        rgb(224, 224, 224),
+        rgb(204, 204, 204)
+    ) !important;
+}
+.fillContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 30rem;
+    height: 100%;
+}
+.noAnswer {
+    padding-left: 6px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 0.8rem;
 }

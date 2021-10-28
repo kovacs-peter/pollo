@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider as ReduxProvider } from "react-redux";
 import reduxStore from "./redux/store";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const client = new QueryClient();
 
@@ -16,6 +17,7 @@ ReactDOM.render(
                 <App />
             </ReduxProvider>
         </React.StrictMode>
+        <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>,
     document.getElementById("root")
 );

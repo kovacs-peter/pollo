@@ -1,6 +1,6 @@
 import React from "react";
 
-const LoaderWithoutStyle = (styles) => {
+const LoaderWithoutStyle = ({ styles }) => {
     return (
         <div className={styles.container}>
             <span className={styles.circle}></span>

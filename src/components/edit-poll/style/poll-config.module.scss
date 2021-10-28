@@ -38,9 +38,16 @@
     color: #898f99;
     /* background: linear-gradient(145deg, #e62402, #aa1b01); */
 }
+
 .submitButton {
+    @media only screen and (max-width: 768px) {
+        width: 100% !important;
+    }
+    &:hover {
+        background: linear-gradient(145deg, rgb(84, 94, 235), #0b42db);
+    }
     box-shadow: 5px 5px 10px #b9b9b9, -5px -5px 10px #d4d4d4;
-    background: linear-gradient(145deg, rgb(1, 150, 170), #0211e6);
+    background: linear-gradient(145deg, rgb(92, 102, 255), #0c49f1);
     color: #fff;
     font-weight: 200;
     align-self: flex-end;

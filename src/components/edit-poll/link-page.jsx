@@ -1,5 +1,6 @@
 import styles from "./style/poll-config.module.scss";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const LinkPage = ({ id }) => {
     const [clicked, setClicked] = useState(false);
     const plloUrl = `${window.location.host}/${id}`;
@@ -16,9 +17,9 @@ const LinkPage = ({ id }) => {
                 <small>You can access the poll here:</small>
                 <br />
                 <div>
-                    <a style={{ cursor: "pointer" }} href={plloUrl}>
+                    <Link style={{ cursor: "pointer" }} to={`/${id}`}>
                         {plloUrl}
-                    </a>
+                    </Link>
                 </div>
                 <br />
                 <button

@@ -1,7 +1,31 @@
 .container {
     display: flex;
-    // flex-direction: column;
+    flex-direction: column;
     // justify-content: space-between;
     min-height: 30rem;
     height: 100%;
+    width: 100%;
+}
+.title {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+.percentageContainer {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.percentageBackground {
+    margin-top: 0.5rem;
+    height: 2rem;
+    width: 100%;
+    border-radius: 1rem;
+    background: #f8f8f8;
+    box-shadow: inset 5px 5px 10px #c4c4c4, inset -5px -5px 10px #ffffff;
+}
+.percentage {
+    height: 2rem;
+    border-radius: 1rem;
+    background: linear-gradient(145deg, #00b60a, #009908);
+    box-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
 }

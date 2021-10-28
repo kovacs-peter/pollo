@@ -43,7 +43,10 @@ const PollFill = () => {
             </div>
         );
     if (!pollLoading && !poll) return <Redirect to="/" />;
-    if (poll.answeredBy && poll.answeredBy.map((ans) => ans.id).includes(user.uid))
+    if (
+        poll.answeredBy?.length &&
+        poll.answeredBy.map((ans) => ans.id).includes(user.uid)
+    )
         return <Redirect to={`${pollUid}/answers`} />;
 
     if (poll.password && !passCorrect)
@@ -55,15 +58,17 @@ const PollFill = () => {
             <div>
                 <h1 className={styles.title}>{poll.question}</h1>
                 <div className={styles.optionsContainer}>
-                    {Object.keys(poll.options).map((option) => (
-                        <OptionRadio
-                            onCheck={() => setSelectedOption(option)}
-                            key={option}
-                            checked={selectedOption === option}
-                        >
-                            {option}
-                        </OptionRadio>
-                    ))}
+                    {Object.keys(poll.options)
+                        .sort()
+                        .map((option) => (
+                            <OptionRadio
+                                onCheck={() => setSelectedOption(option)}
+                                key={option}
+                                checked={selectedOption === option}
+                            >
+                                {option}
+                            </OptionRadio>
+                        ))}
                 </div>
             </div>
             <div style={{ alignSelf: "flex-end" }}>

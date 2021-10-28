@@ -1,4 +1,4 @@
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { firestore } from "../api/firebase";
 
@@ -16,7 +16,11 @@ const updatePoll = async ({ pollUid, userId, selectedOption }) => {
 };
 
 export const useUpdatePoll = () => {
+    const client = useQueryClient();
     return useMutation((data) => updatePoll(data), {
         retry: false,
+        onSuccess: () => {
+            client.invalidateQueries("poll");
+        },
     });
 };

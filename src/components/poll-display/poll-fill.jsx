@@ -1,20 +1,19 @@
-import { usePoll } from "../../hooks/usePoll";
 import { useState, useEffect } from "react";
-import { useLocation, useHistory, Redirect } from "react-router-dom";
+import { useParams, useHistory, Redirect } from "react-router-dom";
+import { useUpdatePoll } from "../../hooks/useUpdatePoll";
+import { usePoll } from "../../hooks/usePoll";
+import { useSelector } from "react-redux";
 import styles from "./style/poll-fill.module.scss";
-import configStyles from "../edit-poll/style/poll-config.module.scss";
+import configStyles from "../poll-config/style/poll-config.module.scss";
 
 import Loader from "../misc/loader-without-style";
 import PollPassword from "./poll-password";
 import OptionRadio from "./option-radio";
-import { useUpdatePoll } from "../../hooks/useUpdatePoll";
-import { useSelector } from "react-redux";
 
 const PollFill = () => {
     const [passCorrect, setPassCorrect] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
-    const { pathname } = useLocation();
-    const pollUid = pathname.split("/")[1];
+    const { id: pollUid } = useParams();
 
     const history = useHistory();
     const { data: poll, isLoading: pollLoading } = usePoll(pollUid);
@@ -44,7 +43,7 @@ const PollFill = () => {
             </div>
         );
     if (!pollLoading && !poll) return <Redirect to="/" />;
-    if (poll.answeredBy.map((ans) => ans.id).includes(user.uid))
+    if (poll.answeredBy && poll.answeredBy.map((ans) => ans.id).includes(user.uid))
         return <Redirect to={`${pollUid}/answers`} />;
 
     if (poll.password && !passCorrect)

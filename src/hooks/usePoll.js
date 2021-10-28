@@ -9,6 +9,7 @@ const fetchPoll = (uid) => async () => {
 export const usePoll = (uid) => {
     return useQuery("poll", fetchPoll(uid), {
         retry: false,
-        refetchOnWindowFocus: false,
+        refetchOnWindowFocus: true,
+        refetchInterval: 10000,
     });
 };

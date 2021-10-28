@@ -1,16 +1,16 @@
-import Layout from "./layout/layout";
-import Login from "./login";
 import { Switch, Route } from "react-router-dom";
-import PollConfig from "./edit-poll/poll-config";
-import PollList from "./my-polls/poll-list";
-import PollFill from "./fill-out-poll/poll-fill";
-import PollResults from "./poll-results/poll-results";
-import NotFound from "./misc/not-found";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { setUser } from "../redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import Layout from "./layout/layout";
+import Login from "./login";
+import PollConfig from "./poll-config/poll-config";
+import PollList from "./poll-list/poll-list";
+import PollFill from "./poll-display/poll-fill";
+import PollResults from "./poll-results/poll-results";
+import NotFound from "./misc/not-found";
 
 const Routes = () => {
     const history = useHistory();

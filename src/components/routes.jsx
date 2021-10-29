@@ -19,7 +19,7 @@ const Routes = () => {
 
     const user = useSelector((state) => state.user.userData);
     useEffect(() => {
-        if (user) return;
+        if (user || pathname === "/login") return;
         const userJSON = localStorage.getItem("user");
         if (userJSON) {
             dispatch(setUser(JSON.parse(userJSON)));

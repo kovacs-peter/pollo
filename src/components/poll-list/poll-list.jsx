@@ -17,7 +17,7 @@ const PollList = () => {
             </div>
         );
     return (
-        <div className={style.pageContainer}>
+        <div className="content">
             {pollList &&
                 pollList.map((poll) => (
                     <div key={poll.uid} className={style.listItem}>

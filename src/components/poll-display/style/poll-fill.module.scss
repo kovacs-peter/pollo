@@ -8,7 +8,7 @@
 }
 
 .title {
-    text-align: center;
+    //text-align: center;
     width: 100%;
     margin-bottom: 3rem;
 }
@@ -87,13 +87,7 @@
         rgb(204, 204, 204)
     ) !important;
 }
-.fillContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 30rem;
-    height: 100%;
-}
+
 .noAnswer {
     padding-left: 6px;
     margin-top: 0.5rem;

@@ -29,7 +29,7 @@ const PollResult = () => {
             </div>
         );
     return (
-        <div className={styles.container}>
+        <div className="content">
             <h1 className={styles.title}>{poll.question}</h1>
             {!allAnswers.length && (
                 <>

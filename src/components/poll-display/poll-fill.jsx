@@ -53,7 +53,7 @@ const PollFill = () => {
             <PollPassword passInput={(val) => setPassCorrect(val === poll.password)} />
         );
     return (
-        <div className={styles.fillContainer}>
+        <div className="content">
             <div>
                 <h1 className={styles.title}>{poll.question}</h1>
                 <div className={styles.optionsContainer}>

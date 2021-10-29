@@ -57,7 +57,7 @@ const PollConfig = () => {
 
     if (pollId) return <LinkPage id={pollId} />;
     return (
-        <div className={styles.flex}>
+        <div className="content">
             <h1 className={styles.headerText}>
                 Create a poll
                 <span

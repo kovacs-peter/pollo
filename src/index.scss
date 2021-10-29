@@ -8,16 +8,18 @@ body {
     background-color: #f8f8f8;
     color: #898f99;
     font-size: 1.2rem;
-}
-@media only screen and (max-width: 768px) {
-    body {
-        font-size: 0.8rem;
+    @media only screen and (max-width: 768px) {
+        font-size: 1rem;
     }
 }
+
 h1 {
     margin: 0;
     font-weight: 700;
     font-size: 2rem;
+    @media only screen and (max-width: 768px) {
+        font-size: 1.5rem;
+    }
 }
 .formInput {
     color: #4c4e52;
@@ -55,14 +57,17 @@ h1 {
     font-size: 1.2rem;
     padding: 1rem;
     box-shadow: 5px 5px 10px #d3d3d3, -5px -5px 10px #ffffff;
-
+    text-decoration: none;
     &.add {
         font-weight: 700;
         width: 3rem;
         height: 3rem;
         padding: 0 1rem;
-        margin: 0 0 1rem 0;
+        margin: 0 0 3rem 0;
         background: linear-gradient(145deg, #02e60d, #00aa09);
+        &:hover {
+            background: linear-gradient(145deg, #00aa09, #02e60d);
+        }
     }
     &.remove {
         position: relative;
@@ -79,8 +84,13 @@ h1 {
 
     &.submit {
         @media only screen and (max-width: 768px) {
-            width: 100% !important;
+            width: calc(100% - 2rem);
+            margin: 1rem;
+            position: fixed;
+            bottom: 2rem;
+            left: 0;
         }
+
         &:hover {
             background: linear-gradient(145deg, rgb(84, 94, 235), #0b42db);
         }
@@ -88,11 +98,19 @@ h1 {
         background: linear-gradient(145deg, rgb(92, 102, 255), #0c49f1);
         color: #fff;
         font-weight: 200;
-        align-self: flex-end;
         width: fit-content;
         min-height: 3.5rem;
         min-width: 9.5rem;
-        justify-self: flex-end;
+        align-self: flex-end;
+    }
+    &.disabled {
+        color: #4c4e52;
+        cursor: default;
+        background: linear-gradient(
+            145deg,
+            rgb(224, 224, 224),
+            rgb(204, 204, 204)
+        ) !important;
     }
 }
 .content {
@@ -101,4 +119,14 @@ h1 {
     min-height: 30rem;
     height: 100%;
     width: 100%;
+    &.loader {
+        align-items: center;
+        justify-content: center;
+    }
+}
+.header-text {
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }

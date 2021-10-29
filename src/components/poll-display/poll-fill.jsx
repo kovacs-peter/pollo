@@ -34,19 +34,18 @@ const PollFill = () => {
             pollUid: pollUid,
         });
     };
-
+    const alreadyAnswered = () => {
+        poll.answeredBy?.length &&
+            poll.answeredBy.map((ans) => ans.id).includes(user.uid);
+    };
     if (pollLoading || !user)
         return (
-            <div className={styles.loaderContainer}>
+            <div className="content loader">
                 <Loader />
             </div>
         );
-    if (!pollLoading && !poll) return <Redirect to="/" />;
-    if (
-        poll.answeredBy?.length &&
-        poll.answeredBy.map((ans) => ans.id).includes(user.uid)
-    )
-        return <Redirect to={`${pollUid}/answers`} />;
+    if (!poll) return <Redirect to="/" />;
+    if (alreadyAnswered()) return <Redirect to={`${pollUid}/answers`} />;
 
     if (poll.password && !passCorrect)
         return (
@@ -54,8 +53,8 @@ const PollFill = () => {
         );
     return (
         <div className="content">
-            <div>
-                <h1 className={styles.title}>{poll.question}</h1>
+            <div className={styles.form}>
+                <h1 className="header-text">{poll.question}</h1>
                 <div className={styles.optionsContainer}>
                     {Object.keys(poll.options)
                         .sort()
@@ -73,14 +72,13 @@ const PollFill = () => {
             <div style={{ alignSelf: "flex-end" }}>
                 <button
                     onClick={handleAnswer}
-                    className={`${
-                        !(typeof selectedOption === "string") ? styles.disabled : ""
-                    } ${styles.answerButton}`}
+                    disabled={!selectedOption}
+                    className={`button submit ${!selectedOption ? "disabled" : ""}`}
                 >
                     {mutationRunning ? <Loader small /> : "ANSWER"}
                 </button>
                 <div onClick={handleAnswer} className={styles.noAnswer}>
-                    Bring me the answers
+                    Just show the answers
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ const HEADER_ITEMS = [
 ];
 const Header = () => {
     return (
-        <div className={styles.headerContainer}>
+        <header className={styles.headerContainer}>
             <div>
                 <Link className={styles.logo} to="/">
                     🐓 POLLO
@@ -20,7 +20,7 @@ const Header = () => {
                     </Link>
                 ))}
             </div>
-        </div>
+        </header>
     );
 };
 

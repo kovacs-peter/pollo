@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./style/poll-config.module.scss";
 import { useSelector } from "react-redux";
 import LinkPage from "./link-page";
@@ -11,16 +11,16 @@ const PollConfig = () => {
         if (state.user.userData) return JSON.parse(state.user.userData);
     });
 
-    const [question, setQuestion] = useState("");
+    const questionRef = useRef("");
     const [passNeeded, setPassNeeded] = useState(false);
-    const [pollPassword, setPollPassword] = useState("");
+    const passRef = useRef();
     const [answers, setAnswers] = useState({ option0: "" });
-    const [pollId, setpollId] = useState(null);
+    const [pollId, setPollId] = useState(null);
     const { mutate: createPoll, isLoading, isSuccess, data } = useCreatePoll();
 
     useEffect(() => {
         if (isSuccess) {
-            setpollId(data.id);
+            setPollId(data.id);
         }
     }, [isSuccess, data]);
 
@@ -48,8 +48,8 @@ const PollConfig = () => {
         );
         const params = {
             options: optionsObject,
-            password: pollPassword,
-            question: question,
+            password: passRef.current.value,
+            question: questionRef.current.value,
             userId: user.uid,
         };
         createPoll(params);
@@ -58,11 +58,11 @@ const PollConfig = () => {
     if (pollId) return <LinkPage id={pollId} />;
     return (
         <div className="content">
-            <h1 className={styles.headerText}>
+            <h1 className="header-text">
                 Create a poll
                 <span
+                    className={styles.lakat}
                     aria-label="Protect the poll with a password"
-                    style={{ cursor: "pointer", fontSize: "1.6rem" }}
                     onClick={() => {
                         setPassNeeded((oldState) => !oldState);
                     }}
@@ -70,16 +70,15 @@ const PollConfig = () => {
                     {passNeeded ? "🔒" : "🔓"}
                 </span>
             </h1>
-            <div>
-                <label style={{ width: "100%" }}>
+            <div className={styles.form}>
+                <label>
                     Question:
                     <input
                         className="formInput"
                         type="text"
                         name="question"
                         placeholder="What is the meaing of life?"
-                        value={question}
-                        onChange={(event) => setQuestion(event.target.value)}
+                        ref={questionRef}
                     />
                 </label>
                 {passNeeded && (
@@ -89,8 +88,7 @@ const PollConfig = () => {
                             className="formInput"
                             type="text"
                             name="pollPassword"
-                            value={pollPassword}
-                            onChange={(event) => setPollPassword(event.target.value)}
+                            ref={passRef}
                         />
                     </label>
                 )}

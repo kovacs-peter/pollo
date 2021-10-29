@@ -1,6 +1,13 @@
-.headerText {
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.lakat {
+    cursor: pointer;
+    font-size: 1.6rem;
+    &:hover {
+        &::after {
+            content: " Protect it with password";
+            font-size: 0.9rem;
+        }
+    }
+}
+.form {
+    flex-grow: 1;
 }

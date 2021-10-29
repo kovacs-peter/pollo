@@ -17,14 +17,12 @@ const Routes = () => {
     const dispatch = useDispatch();
     const { pathname } = useLocation();
 
-    const user = useSelector((state) => {
-        if (state.user.userData) return JSON.parse(state.user.userData);
-    });
+    const user = useSelector((state) => state.user.userData);
     useEffect(() => {
         if (user) return;
         const userJSON = localStorage.getItem("user");
         if (userJSON) {
-            dispatch(setUser(userJSON));
+            dispatch(setUser(JSON.parse(userJSON)));
         } else {
             history.push(`/login?from=${pathname}`);
         }
@@ -32,12 +30,12 @@ const Routes = () => {
     }, [dispatch, user, history]);
 
     return (
-        <Layout>
+        <Layout user={user}>
             <Switch>
+                <Route path={"/login"} exact strict component={Login} />
                 <Route path="/new" exact strict component={PollConfig} />
                 <Route path={"/:id"} exact strict component={PollFill} />
                 <Route path={"/:id/answers"} exact strict component={PollResults} />
-                <Route path={"/login"} exact strict component={Login} />
                 <Route path={"/"} exact strict component={PollList} />
                 <Route component={NotFound} />
             </Switch>

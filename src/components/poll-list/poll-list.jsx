@@ -4,15 +4,13 @@ import { usePolls } from "../../hooks/usePolls";
 import { Link } from "react-router-dom";
 import Loader from "../misc/loader";
 const PollList = () => {
-    const user = useSelector((state) => {
-        if (state.user.userData) return JSON.parse(state.user.userData);
-    });
+    const user = useSelector((state) => state.user.userData);
+
     const userUid = user?.uid;
     const { data: pollList, isLoading } = usePolls(userUid);
-
-    if (isLoading)
+    if (isLoading || !user)
         return (
-            <div className="content loader">
+            <div className="content center">
                 <Loader />
             </div>
         );

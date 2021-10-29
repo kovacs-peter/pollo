@@ -7,9 +7,7 @@ import { useCreatePoll } from "../../hooks/useCreatePoll";
 import Loader from "../misc/loader";
 
 const PollConfig = () => {
-    const user = useSelector((state) => {
-        if (state.user.userData) return JSON.parse(state.user.userData);
-    });
+    const user = useSelector((state) => state.user.userData);
 
     const questionRef = useRef("");
     const [passNeeded, setPassNeeded] = useState(false);

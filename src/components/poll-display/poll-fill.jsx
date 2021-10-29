@@ -40,7 +40,7 @@ const PollFill = () => {
     };
     if (pollLoading || !user)
         return (
-            <div className="content loader">
+            <div className="content center">
                 <Loader />
             </div>
         );

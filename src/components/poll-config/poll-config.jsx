@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import LinkPage from "./link-page";
 import Option from "./option";
 import { useCreatePoll } from "../../hooks/useCreatePoll";
-import Loader from "../misc/loader-without-style";
+import Loader from "../misc/loader";
 
 const PollConfig = () => {
     const user = useSelector((state) => {
@@ -114,20 +114,13 @@ const PollConfig = () => {
                             />
                         ))}
                     </label>
-                    <button
-                        onClick={handleAdd}
-                        className={`${styles.addButton} ${styles.button}`}
-                    >
+                    <button onClick={handleAdd} className="button add">
                         +
                     </button>
                 </div>
             </div>
-            <button
-                disabled={isLoading}
-                onClick={handleSubmit}
-                className={`${styles.submitButton} ${styles.button}`}
-            >
-                {isLoading ? <Loader styles={styles} /> : "SUMBIT POLL"}
+            <button disabled={isLoading} onClick={handleSubmit} className="button submit">
+                {isLoading ? <Loader small /> : "SUMBIT POLL"}
             </button>
         </div>
     );

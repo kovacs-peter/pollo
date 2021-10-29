@@ -6,13 +6,10 @@
     padding: 5rem 0;
     align-items: center;
     justify-content: center;
-}
 
-.polLogo {
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 4rem;
-    color: #00ccbe;
+    @media only screen and (max-width: 768px) {
+        padding: 2rem 0 3rem 0;
+    }
 }
 
 .mainContent {
@@ -24,4 +21,10 @@
     background: #f8f8f8;
     box-shadow: 8px 8px 17px #d3d3d3, -8px -8px 17px #ffffff;
     padding: 3em;
+    @media only screen and (max-width: 768px) {
+        width: 90%;
+        margin: 0;
+        padding: 0rem;
+        box-shadow: none;
+    }
 }

@@ -5,110 +5,11 @@
     gap: 0.5rem;
 }
 
-.button {
-    cursor: pointer;
-    border: none;
-    /* outline: none; */
-    background: none;
-    font-size: 1rem;
-    border-radius: 2rem;
-    color: #fff;
-    font-weight: 300;
-    font-size: 1.2rem;
-    padding: 1rem;
-    box-shadow: 5px 5px 10px #d3d3d3, -5px -5px 10px #ffffff;
-}
-.addButton {
-    font-weight: 700;
-    width: 3rem;
-    height: 3rem;
-    padding: 0 1rem;
-    margin: 0 0 1rem 0;
-    background: linear-gradient(145deg, #02e60d, #00aa09);
-}
-.removeButton {
-    position: relative;
-    top: -4rem;
-    margin-bottom: -4rem;
-    right: calc(-95% + 1rem);
-    font-weight: 300;
-    width: 3rem;
-    height: 3rem;
-    padding: 0 1rem;
-    color: #898f99;
-    /* background: linear-gradient(145deg, #e62402, #aa1b01); */
-}
-
-.submitButton {
-    @media only screen and (max-width: 768px) {
-        width: 100% !important;
-    }
-    &:hover {
-        background: linear-gradient(145deg, rgb(84, 94, 235), #0b42db);
-    }
-    box-shadow: 5px 5px 10px #b9b9b9, -5px -5px 10px #d4d4d4;
-    background: linear-gradient(145deg, rgb(92, 102, 255), #0c49f1);
-    color: #fff;
-    font-weight: 200;
-    align-self: flex-end;
-    width: fit-content;
-    min-height: 3.5rem;
-    min-width: 9.5rem;
-}
 .flex {
     min-height: 30rem;
     height: 100%;
     display: flex;
+
     flex-direction: column;
-    justify-content: space-between;
-}
-
-.container {
-    margin: auto;
-    width: 70px;
-    display: flex;
-    position: relative;
-    .circle {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: #fff;
-        animation: move 500ms linear 0ms infinite;
-        margin-right: 20px;
-
-        &:first-child {
-            position: absolute;
-            top: 0;
-            left: 0;
-            animation: grow 500ms linear 0ms infinite;
-        }
-
-        &:last-child {
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin-right: 0;
-            animation: grow 500ms linear 0s infinite reverse;
-        }
-    }
-}
-
-@keyframes grow {
-    from {
-        transform: scale(0, 0);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1, 1);
-        opacity: 1;
-    }
-}
-
-@keyframes move {
-    from {
-        transform: translateX(0px);
-    }
-    to {
-        transform: translateX(30px);
-    }
+    //justify-content: space-between;
 }

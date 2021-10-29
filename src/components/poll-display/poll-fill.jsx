@@ -4,9 +4,8 @@ import { useUpdatePoll } from "../../hooks/useUpdatePoll";
 import { usePoll } from "../../hooks/usePoll";
 import { useSelector } from "react-redux";
 import styles from "./style/poll-fill.module.scss";
-import configStyles from "../poll-config/style/poll-config.module.scss";
 
-import Loader from "../misc/loader-without-style";
+import Loader from "../misc/loader";
 import PollPassword from "./poll-password";
 import OptionRadio from "./option-radio";
 
@@ -39,7 +38,7 @@ const PollFill = () => {
     if (pollLoading || !user)
         return (
             <div className={styles.loaderContainer}>
-                <Loader styles={styles} />
+                <Loader />
             </div>
         );
     if (!pollLoading && !poll) return <Redirect to="/" />;
@@ -78,7 +77,7 @@ const PollFill = () => {
                         !(typeof selectedOption === "string") ? styles.disabled : ""
                     } ${styles.answerButton}`}
                 >
-                    {mutationRunning ? <Loader styles={configStyles} /> : "ANSWER"}
+                    {mutationRunning ? <Loader small /> : "ANSWER"}
                 </button>
                 <div onClick={handleAnswer} className={styles.noAnswer}>
                     Bring me the answers

@@ -1,11 +1,11 @@
-import { useMutation } from "react-query";
-import { addDoc, collection, doc } from "firebase/firestore";
+import { useMutation, useQueryClient } from "react-query";
+import { addDoc, collection } from "firebase/firestore";
 import { firestore } from "../api/firebase";
 
 const submitPoll = async (params) => {
     const apiParams = {
         ...params,
-        createdBy: doc(firestore, "users", params.userId),
+        createdById: params.userId,
         answeredBy: [],
     };
     const result = await addDoc(collection(firestore, "polls"), apiParams);
@@ -13,7 +13,12 @@ const submitPoll = async (params) => {
 };
 
 export const useCreatePoll = () => {
+    const client = useQueryClient();
+
     return useMutation((data) => submitPoll(data), {
         retry: false,
+        onSuccess: () => {
+            client.invalidateQueries("polls");
+        },
     });
 };

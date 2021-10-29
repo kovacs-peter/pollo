@@ -22,10 +22,7 @@ const LinkPage = ({ id }) => {
                     </Link>
                 </div>
                 <br />
-                <button
-                    className={`${styles.submitButton} ${styles.button}`}
-                    onClick={handleClick}
-                >
+                <button className="button submit" onClick={handleClick}>
                     {clicked ? "Copied!" : "Copy to Clipborad"}
                 </button>
             </div>

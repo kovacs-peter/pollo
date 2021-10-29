@@ -1,5 +1,3 @@
-import styles from "./style/poll-config.module.scss";
-
 const Option = ({ onInput, value, name, handleRemove, noRemove, count }) => {
     return (
         <div style={{ height: "5rem" }}>
@@ -15,7 +13,7 @@ const Option = ({ onInput, value, name, handleRemove, noRemove, count }) => {
                 <button
                     aria-label="Add another option"
                     onClick={handleRemove}
-                    className={`${styles.removeButton} ${styles.button}`}
+                    className="button remove"
                 >
                     ×
                 </button>

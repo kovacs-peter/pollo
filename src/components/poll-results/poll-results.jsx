@@ -3,7 +3,7 @@ import styles from "./style/poll-result.module.scss";
 import fillStyles from "../poll-display/style/poll-fill.module.scss";
 import { useParams } from "react-router-dom";
 import { usePoll } from "../../hooks/usePoll";
-import Loader from "../misc/loader-without-style";
+import Loader from "../misc/loader";
 import PercentageDisplay from "./percentage-display";
 
 const PollResult = () => {
@@ -13,7 +13,6 @@ const PollResult = () => {
 
     useEffect(() => {
         if (!poll) return;
-        debugger;
         setAllAnswers(
             Object.keys(poll.options)
                 .map((key) => {
@@ -26,7 +25,7 @@ const PollResult = () => {
     if (pollLoading)
         return (
             <div className={fillStyles.loaderContainer}>
-                <Loader styles={fillStyles} />
+                <Loader />
             </div>
         );
     return (

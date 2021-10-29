@@ -2,11 +2,17 @@
 body {
     font-family: "Montserrat", sans-serif;
     margin: 0;
+    padding: 0;
     width: 100vw;
     height: 100vh;
     background-color: #f8f8f8;
     color: #898f99;
     font-size: 1.2rem;
+}
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 0.8rem;
+    }
 }
 h1 {
     margin: 0;
@@ -18,8 +24,9 @@ h1 {
     font-weight: 200;
     width: 95%;
     height: 3rem;
-    padding: 0 1rem;
-    margin: 1rem 0;
+    padding: 0 0.5rem 0 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
     border: none;
     outline: none;
     background: none;
@@ -27,7 +34,64 @@ h1 {
     border-radius: 1.5rem;
     background: #f8f8f8;
     box-shadow: inset 5px 5px 10px #c4c4c4, inset -5px -5px 10px #ffffff;
+    @media only screen and (max-width: 768px) {
+        font-size: 1rem;
+        &::placeholder {
+            font-size: 0.8rem;
+        }
+    }
+    &::placeholder {
+        font-size: 1rem;
+    }
 }
-.formInput::placeholder {
+.button {
+    cursor: pointer;
+    border: none;
+    background: none;
     font-size: 1rem;
+    border-radius: 2rem;
+    color: #fff;
+    font-weight: 300;
+    font-size: 1.2rem;
+    padding: 1rem;
+    box-shadow: 5px 5px 10px #d3d3d3, -5px -5px 10px #ffffff;
+
+    &.add {
+        font-weight: 700;
+        width: 3rem;
+        height: 3rem;
+        padding: 0 1rem;
+        margin: 0 0 1rem 0;
+        background: linear-gradient(145deg, #02e60d, #00aa09);
+    }
+    &.remove {
+        position: relative;
+        top: -4rem;
+        margin-bottom: -4rem;
+        right: calc(-95% + 1.5rem);
+        font-weight: 300;
+        width: 3rem;
+        height: 3rem;
+        padding: 0 1rem;
+        color: #898f99;
+        /* background: linear-gradient(145deg, #e62402, #aa1b01); */
+    }
+
+    &.submit {
+        @media only screen and (max-width: 768px) {
+            width: 100% !important;
+        }
+        &:hover {
+            background: linear-gradient(145deg, rgb(84, 94, 235), #0b42db);
+        }
+        box-shadow: 5px 5px 10px #b9b9b9, -5px -5px 10px #d4d4d4;
+        background: linear-gradient(145deg, rgb(92, 102, 255), #0c49f1);
+        color: #fff;
+        font-weight: 200;
+        align-self: flex-end;
+        width: fit-content;
+        min-height: 3.5rem;
+        min-width: 9.5rem;
+        justify-self: flex-end;
+    }
 }

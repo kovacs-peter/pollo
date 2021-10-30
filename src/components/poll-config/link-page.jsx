@@ -1,4 +1,3 @@
-import styles from "./style/poll-config.module.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 const LinkPage = ({ id }) => {
@@ -9,7 +8,7 @@ const LinkPage = ({ id }) => {
         setClicked(true);
     };
     return (
-        <div className={styles.flex}>
+        <div className="content" style={{ justifyContent: "space-between" }}>
             <h1 style={{ textAlign: "center" }}>
                 🐓🐓🐓 Your Pollo is available! 🐓🐓🐓
             </h1>

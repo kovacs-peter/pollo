@@ -16,9 +16,7 @@ const PollFill = () => {
 
     const history = useHistory();
     const { data: poll, isLoading: pollLoading } = usePoll(pollUid);
-    const user = useSelector((state) => {
-        if (state.user.userData) return JSON.parse(state.user.userData);
-    });
+    const user = useSelector((state) => state.user.userData);
     const { mutate, isSuccess, isLoading: mutationRunning } = useUpdatePoll();
 
     useEffect(() => {
@@ -27,17 +25,17 @@ const PollFill = () => {
         // eslint-disable-next-line
     }, [isSuccess]);
 
-    const handleAnswer = () => {
+    const handleAnswer = (noAns = false) => {
         mutate({
             userId: user.uid,
-            selectedOption: selectedOption,
+            selectedOption: noAns ? null : selectedOption,
             pollUid: pollUid,
         });
     };
-    const alreadyAnswered = () => {
+    const alreadyAnswered = () =>
         poll.answeredBy?.length &&
-            poll.answeredBy.map((ans) => ans.id).includes(user.uid);
-    };
+        poll.answeredBy.map((ans) => ans.id).includes(user.uid);
+
     if (pollLoading || !user)
         return (
             <div className="content center">
@@ -71,13 +69,13 @@ const PollFill = () => {
             </div>
             <div style={{ alignSelf: "flex-end" }}>
                 <button
-                    onClick={handleAnswer}
+                    onClick={() => handleAnswer(false)}
                     disabled={!selectedOption}
                     className={`button submit ${!selectedOption ? "disabled" : ""}`}
                 >
                     {mutationRunning ? <Loader small /> : "ANSWER"}
                 </button>
-                <div onClick={handleAnswer} className={styles.noAnswer}>
+                <div onClick={() => handleAnswer(true)} className={styles.noAnswer}>
                     Just show the answers
                 </div>
             </div>

@@ -46,8 +46,8 @@ const PollConfig = () => {
         );
         const params = {
             options: optionsObject,
-            password: passRef.current.value,
-            question: questionRef.current.value,
+            password: passRef?.current?.value || null,
+            question: questionRef?.current?.value || null,
             userId: user.uid,
         };
         createPoll(params);

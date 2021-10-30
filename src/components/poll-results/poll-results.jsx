@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import styles from "./style/poll-result.module.scss";
-import fillStyles from "../poll-display/style/poll-fill.module.scss";
 import { useParams } from "react-router-dom";
 import { usePoll } from "../../hooks/usePoll";
 import Loader from "../misc/loader";
@@ -24,7 +23,7 @@ const PollResult = () => {
 
     if (pollLoading)
         return (
-            <div className={fillStyles.loaderContainer}>
+            <div className="content center">
                 <Loader />
             </div>
         );

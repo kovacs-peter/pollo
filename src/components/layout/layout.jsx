@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Layout = ({ children, user }) => {
     const { infoType, infoText } = useSelector((state) => state.info);
     return (
-        <div style={{ height: "100vh", width: "100vw" }}>
+        <div style={{ height: "100%" }}>
             {infoText && <InfoBar loggedIn={!!user} type={infoType} text={infoText} />}
             {user ? (
                 <>
@@ -14,7 +14,11 @@ const Layout = ({ children, user }) => {
                 </>
             ) : (
                 <div
-                    style={{ display: "flex", justifyContent: "center", height: "100%" }}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        height: "100vh",
+                    }}
                 >
                     <MainContainer>{children}</MainContainer>
                 </div>

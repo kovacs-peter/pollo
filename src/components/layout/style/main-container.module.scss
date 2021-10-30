@@ -3,10 +3,10 @@
     min-height: fit-content;
     display: flex;
     flex-direction: column;
-    padding: 5rem 0;
+    padding: 3rem 0;
     align-items: center;
     justify-content: center;
-
+    margin-top: 3rem;
     @media only screen and (max-width: 768px) {
         padding: 2rem 0 3rem 0;
     }

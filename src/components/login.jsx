@@ -69,9 +69,22 @@ const Login = () => {
                     >
                         Login with google
                     </button>
-                    <div style={{ marginTop: "1rem", alignSelf: "center" }}>
-                        <input id="check" onClick={handleToggle} type="checkbox" />
-                        <label htmlFor="check"> stay logged in</label>
+                    <div
+                        style={{
+                            marginTop: "1rem",
+                            alignSelf: "center",
+                        }}
+                    >
+                        <input
+                            style={{ cursor: "pointer" }}
+                            id="check"
+                            onClick={handleToggle}
+                            type="checkbox"
+                        />
+                        <label style={{ cursor: "pointer" }} htmlFor="check">
+                            {" "}
+                            stay logged in
+                        </label>
                     </div>
                 </div>
             )}

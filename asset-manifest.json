@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/kovacs-peter/pollo/static/css/main.6705c2cd.chunk.css",
+    "main.js": "/kovacs-peter/pollo/static/js/main.17018354.chunk.js",
+    "main.js.map": "/kovacs-peter/pollo/static/js/main.17018354.chunk.js.map",
+    "runtime-main.js": "/kovacs-peter/pollo/static/js/runtime-main.995ded64.js",
+    "runtime-main.js.map": "/kovacs-peter/pollo/static/js/runtime-main.995ded64.js.map",
+    "static/js/2.9bb7f460.chunk.js": "/kovacs-peter/pollo/static/js/2.9bb7f460.chunk.js",
+    "static/js/2.9bb7f460.chunk.js.map": "/kovacs-peter/pollo/static/js/2.9bb7f460.chunk.js.map",
+    "static/js/3.d4cb0bf0.chunk.js": "/kovacs-peter/pollo/static/js/3.d4cb0bf0.chunk.js",
+    "static/js/3.d4cb0bf0.chunk.js.map": "/kovacs-peter/pollo/static/js/3.d4cb0bf0.chunk.js.map",
+    "index.html": "/kovacs-peter/pollo/index.html",
+    "static/css/main.6705c2cd.chunk.css.map": "/kovacs-peter/pollo/static/css/main.6705c2cd.chunk.css.map",
+    "static/js/2.9bb7f460.chunk.js.LICENSE.txt": "/kovacs-peter/pollo/static/js/2.9bb7f460.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.995ded64.js",
+    "static/js/2.9bb7f460.chunk.js",
+    "static/css/main.6705c2cd.chunk.css",
+    "static/js/main.17018354.chunk.js"
+  ]
+}

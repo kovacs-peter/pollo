@@ -14,17 +14,21 @@ import { useSelector } from "react-redux";
 const provider = new GoogleAuthProvider(auth);
 
 const Login = () => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const history = useHistory();
     const { search } = useLocation();
     const user = useSelector((state) => state.user.userData);
 
+    const handleToggle = (event) => {
+        localStorage.setItem("persistentLogin", event.target.checked);
+    };
+
     useEffect(() => {
+        //setLoading(true);
         if (user?.userData) history.push(search.split("/"));
         getRedirectResult(auth)
             .then((result) => {
-                setLoading(true);
                 if (!result?.user) {
                     setLoading(false);
                     return;
@@ -32,7 +36,9 @@ const Login = () => {
 
                 const json = JSON.stringify(result.user);
                 dispatch(setUser(JSON.parse(json)));
-                localStorage.setItem("user", json);
+
+                if (localStorage.getItem("persistentLogin") === "true")
+                    localStorage.setItem("user", json);
 
                 setDoc(doc(firestore, "users", result.user.uid), {
                     uid: result.user.uid,
@@ -45,8 +51,9 @@ const Login = () => {
             })
             .catch((error) => {
                 dispatch(setInfo({ infoType: "error", infoText: "Unsuccessful login" }));
-                console.log(error);
-            });
+                console.error(error.message);
+            })
+            .finally(() => setLoading(false));
         // eslint-disable-next-line
     }, []);
 
@@ -62,6 +69,10 @@ const Login = () => {
                     >
                         Login with google
                     </button>
+                    <div style={{ marginTop: "1rem", alignSelf: "center" }}>
+                        <input id="check" onClick={handleToggle} type="checkbox" />
+                        <label htmlFor="check"> stay logged in</label>
+                    </div>
                 </div>
             )}
         </div>

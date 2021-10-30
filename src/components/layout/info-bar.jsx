@@ -3,7 +3,7 @@ import styles from "./style/header.module.scss";
 import { resetInfo } from "../../redux/infoSlice";
 import { useDispatch } from "react-redux";
 
-const InfoBar = ({ text, type }) => {
+const InfoBar = ({ text, type, loggedIn }) => {
     const dispatch = useDispatch();
     const closeBar = () => {
         dispatch(resetInfo());
@@ -17,7 +17,10 @@ const InfoBar = ({ text, type }) => {
 
     return (
         <div
-            style={{ backgroundColor: type === "info" ? "#00aa09" : "#b82424" }}
+            style={{
+                backgroundColor: type === "info" ? "#00aa09" : "#b82424",
+                top: loggedIn ? "3rem" : "0px",
+            }}
             className={styles.infoBar}
             onClick={closeBar}
         >

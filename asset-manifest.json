@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/kovacs-peter/pollo/github-deploy/static/css/main.6705c2cd.chunk.css",
-    "main.js": "/kovacs-peter/pollo/github-deploy/static/js/main.1fb2f7e2.chunk.js",
-    "main.js.map": "/kovacs-peter/pollo/github-deploy/static/js/main.1fb2f7e2.chunk.js.map",
-    "runtime-main.js": "/kovacs-peter/pollo/github-deploy/static/js/runtime-main.585e27a9.js",
-    "runtime-main.js.map": "/kovacs-peter/pollo/github-deploy/static/js/runtime-main.585e27a9.js.map",
-    "static/js/2.74eb5c2e.chunk.js": "/kovacs-peter/pollo/github-deploy/static/js/2.74eb5c2e.chunk.js",
-    "static/js/2.74eb5c2e.chunk.js.map": "/kovacs-peter/pollo/github-deploy/static/js/2.74eb5c2e.chunk.js.map",
-    "static/js/3.d4cb0bf0.chunk.js": "/kovacs-peter/pollo/github-deploy/static/js/3.d4cb0bf0.chunk.js",
-    "static/js/3.d4cb0bf0.chunk.js.map": "/kovacs-peter/pollo/github-deploy/static/js/3.d4cb0bf0.chunk.js.map",
-    "index.html": "/kovacs-peter/pollo/github-deploy/index.html",
-    "static/css/main.6705c2cd.chunk.css.map": "/kovacs-peter/pollo/github-deploy/static/css/main.6705c2cd.chunk.css.map",
-    "static/js/2.74eb5c2e.chunk.js.LICENSE.txt": "/kovacs-peter/pollo/github-deploy/static/js/2.74eb5c2e.chunk.js.LICENSE.txt"
+    "main.css": "/pollo/static/css/main.6705c2cd.chunk.css",
+    "main.js": "/pollo/static/js/main.0e048bdd.chunk.js",
+    "main.js.map": "/pollo/static/js/main.0e048bdd.chunk.js.map",
+    "runtime-main.js": "/pollo/static/js/runtime-main.bc76828d.js",
+    "runtime-main.js.map": "/pollo/static/js/runtime-main.bc76828d.js.map",
+    "static/js/2.a719bab5.chunk.js": "/pollo/static/js/2.a719bab5.chunk.js",
+    "static/js/2.a719bab5.chunk.js.map": "/pollo/static/js/2.a719bab5.chunk.js.map",
+    "static/js/3.d4cb0bf0.chunk.js": "/pollo/static/js/3.d4cb0bf0.chunk.js",
+    "static/js/3.d4cb0bf0.chunk.js.map": "/pollo/static/js/3.d4cb0bf0.chunk.js.map",
+    "index.html": "/pollo/index.html",
+    "static/css/main.6705c2cd.chunk.css.map": "/pollo/static/css/main.6705c2cd.chunk.css.map",
+    "static/js/2.a719bab5.chunk.js.LICENSE.txt": "/pollo/static/js/2.a719bab5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.585e27a9.js",
-    "static/js/2.74eb5c2e.chunk.js",
+    "static/js/runtime-main.bc76828d.js",
+    "static/js/2.a719bab5.chunk.js",
     "static/css/main.6705c2cd.chunk.css",
-    "static/js/main.1fb2f7e2.chunk.js"
+    "static/js/main.0e048bdd.chunk.js"
   ]
 }

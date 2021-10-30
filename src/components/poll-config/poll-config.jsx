@@ -5,10 +5,11 @@ import LinkPage from "./link-page";
 import Option from "./option";
 import { useCreatePoll } from "../../hooks/useCreatePoll";
 import Loader from "../misc/loader";
+import useValidate from "../../hooks/useValidation";
 
 const PollConfig = () => {
     const user = useSelector((state) => state.user.userData);
-
+    const { validate } = useValidate();
     const questionRef = useRef("");
     const [passNeeded, setPassNeeded] = useState(false);
     const passRef = useRef();
@@ -37,13 +38,34 @@ const PollConfig = () => {
     };
 
     const handleSubmit = () => {
+        const options = Object.values(answers);
+        const valid = validate([
+            {
+                key: "question",
+                value: questionRef?.current?.value,
+                required: true,
+            },
+            {
+                key: "password",
+                value: passRef?.current?.value,
+                required: passNeeded,
+            },
+            {
+                key: "answer options",
+                value: options,
+                required: true,
+            },
+        ]);
+        if (!valid) return;
+
         const optionsObject = {};
-        Object.values(answers).forEach(
+        options.forEach(
             (option) =>
                 (optionsObject[option] = {
                     chosenBy: [],
                 })
         );
+
         const params = {
             options: optionsObject,
             password: passRef?.current?.value || null,

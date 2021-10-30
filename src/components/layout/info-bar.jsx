@@ -11,14 +11,15 @@ const InfoBar = ({ text, type, loggedIn }) => {
     useEffect(() => {
         window.setTimeout(() => {
             closeBar();
-        }, 10000);
+        }, 30000);
         // eslint-disable-next-line
     }, []);
 
     return (
         <div
             style={{
-                backgroundColor: type === "info" ? "#00aa09" : "#b82424",
+                cursor: "pointer",
+                backgroundColor: type === "info" ? "#00aa09" : "#e93030",
                 top: loggedIn ? "3rem" : "0px",
             }}
             className={styles.infoBar}

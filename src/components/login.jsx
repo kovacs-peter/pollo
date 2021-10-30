@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import { auth } from "../api/firebase";
 import { GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "firebase/auth";
 import { setUser } from "../redux/userSlice";
-import { setInfo } from "../redux/infoSlice";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { setDoc, doc } from "firebase/firestore";
 import { firestore } from "../api/firebase";
 import { useLocation } from "react-router-dom";
 import Loader from "./misc/loader";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setInfo } from "../redux/infoSlice";
 
 const provider = new GoogleAuthProvider(auth);
 

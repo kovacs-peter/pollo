@@ -10,14 +10,13 @@ const Layout = ({ children, user }) => {
             {user ? (
                 <>
                     <Header />
-
                     <MainContainer>{children}</MainContainer>
                 </>
             ) : (
                 <div
                     style={{ display: "flex", justifyContent: "center", height: "100%" }}
                 >
-                    {children}
+                    <MainContainer>{children}</MainContainer>
                 </div>
             )}
         </div>

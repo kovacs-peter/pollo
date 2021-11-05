@@ -18,7 +18,7 @@ const PollList = () => {
         <div className="content">
             <h1 className="header-text">My polls</h1>
             <div className={style.flex}>
-                {pollList &&
+                {pollList ? (
                     pollList.map((poll) => (
                         <div key={poll.uid} className={style.listItem}>
                             <div>{poll.question}</div>
@@ -27,7 +27,10 @@ const PollList = () => {
                                 {window.location.host}/#/{poll.uid}
                             </Link>
                         </div>
-                    ))}
+                    ))
+                ) : (
+                    <div>Click on "Create a Poll" to get started...</div>
+                )}
             </div>
             <Link className={style.buttonAlign} to="/new">
                 <button className="button submit">CREATE A POLL</button>

@@ -34,8 +34,13 @@ const Routes = () => {
             <Switch>
                 <Route path={"/login"} exact strict component={Login} />
                 <Route path="/new" exact strict component={PollConfig} />
-                <Route path={"/:id"} exact strict component={PollFill} />
-                <Route path={"/:id/answers"} exact strict component={PollResults} />
+                <Route path={"/:id"} exact component={PollFill} />
+                <Route
+                    path={"/:id/answers"}
+                    exact
+                    strict
+                    component={PollResults}
+                />
                 <Route path={"/"} exact strict component={PollList} />
                 <Route component={NotFound} />
             </Switch>

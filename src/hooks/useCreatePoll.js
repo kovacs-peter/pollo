@@ -19,6 +19,7 @@ export const useCreatePoll = () => {
         retry: false,
         onSuccess: () => {
             client.invalidateQueries("polls");
+            client.removeQueries("poll");
         },
     });
 };

@@ -17,13 +17,18 @@ const PollFill = () => {
     const history = useHistory();
     const { data: poll, isLoading: pollLoading } = usePoll(pollUid);
     const user = useSelector((state) => state.user.userData);
-    const { mutate, isSuccess, isLoading: mutationRunning } = useUpdatePoll();
+    const {
+        mutate,
+        isSuccess: mutationSuccess,
+        isLoading: mutationRunning,
+    } = useUpdatePoll();
 
     useEffect(() => {
-        if (!isSuccess) return;
-        history.push(`/${pollUid}/answers`);
+        if (mutationSuccess) {
+            history.push(`/${pollUid}/answers`);
+        }
         // eslint-disable-next-line
-    }, [isSuccess]);
+    }, [mutationSuccess, mutationRunning]);
 
     const handleAnswer = (noAns = false) => {
         mutate({
@@ -32,9 +37,12 @@ const PollFill = () => {
             pollUid: pollUid,
         });
     };
-    const alreadyAnswered = () =>
-        poll.answeredBy?.length &&
-        poll.answeredBy.map((ans) => ans.id).includes(user.uid);
+    const alreadyAnswered = () => {
+        return (
+            poll.answeredBy?.length &&
+            poll.answeredBy.map((ans) => ans.id).includes(user.uid)
+        );
+    };
 
     if (pollLoading || !user)
         return (
@@ -47,12 +55,18 @@ const PollFill = () => {
 
     if (poll.password && !passCorrect)
         return (
-            <PollPassword passInput={(val) => setPassCorrect(val === poll.password)} />
+            <PollPassword
+                passInput={(val) => setPassCorrect(val === poll.password)}
+            />
         );
     return (
         <div className="content">
             <div className={styles.form}>
-                <h1 className="header-text">{poll.question}</h1>
+                <div>
+                    <h1 className="header-text">{poll.question}</h1>
+                    <p>Select an Option</p>
+                </div>
+
                 <div className={styles.optionsContainer}>
                     {Object.keys(poll.options)
                         .sort()
@@ -71,11 +85,16 @@ const PollFill = () => {
                 <button
                     onClick={() => handleAnswer(false)}
                     disabled={!selectedOption}
-                    className={`button submit ${!selectedOption ? "disabled" : ""}`}
+                    className={`button submit ${
+                        !selectedOption ? "disabled" : ""
+                    }`}
                 >
                     {mutationRunning ? <Loader small /> : "ANSWER"}
                 </button>
-                <div onClick={() => handleAnswer(true)} className={styles.noAnswer}>
+                <div
+                    onClick={() => handleAnswer(true)}
+                    className={styles.noAnswer}
+                >
                     Just show the answers
                 </div>
             </div>

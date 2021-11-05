@@ -28,7 +28,7 @@ const InfoBar = ({ text, type, loggedIn }) => {
             <div></div>
             <div>{text}</div>
             <div className={styles.close} onClick={closeBar}>
-                x
+                ×
             </div>
         </div>
     );

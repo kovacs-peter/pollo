@@ -6,6 +6,7 @@ import Loader from "../misc/loader";
 import PercentageDisplay from "./percentage-display";
 import { useSelector } from "react-redux";
 import { useUpdatePoll } from "../../hooks/useUpdatePoll";
+import { useTitle } from "hooks/useTitle";
 
 const PollResult = () => {
     const { id: pollUid } = useParams();
@@ -13,6 +14,8 @@ const PollResult = () => {
     const { mutate } = useUpdatePoll();
     const [allAnswers, setAllAnswers] = useState([]);
     const user = useSelector((state) => state.user.userData);
+
+    useTitle("Pollo | results");
 
     useEffect(() => {
         if (!user) return;

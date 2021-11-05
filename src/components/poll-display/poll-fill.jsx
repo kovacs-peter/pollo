@@ -4,6 +4,7 @@ import { useUpdatePoll } from "../../hooks/useUpdatePoll";
 import { usePoll } from "../../hooks/usePoll";
 import { useSelector } from "react-redux";
 import styles from "./style/poll-fill.module.scss";
+import { useTitle } from "hooks/useTitle";
 
 import Loader from "../misc/loader";
 import PollPassword from "./poll-password";
@@ -13,7 +14,6 @@ const PollFill = () => {
     const [passCorrect, setPassCorrect] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
     const { id: pollUid } = useParams();
-
     const history = useHistory();
     const { data: poll, isLoading: pollLoading } = usePoll(pollUid);
     const user = useSelector((state) => state.user.userData);
@@ -22,6 +22,8 @@ const PollFill = () => {
         isSuccess: mutationSuccess,
         isLoading: mutationRunning,
     } = useUpdatePoll();
+
+    useTitle(`Pollo | ${poll?.question || "loading..."}`);
 
     useEffect(() => {
         if (mutationSuccess) {

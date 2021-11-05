@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { auth } from "../api/firebase";
-import { GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "firebase/auth";
+import {
+    GoogleAuthProvider,
+    signInWithRedirect,
+    getRedirectResult,
+} from "firebase/auth";
 import { setUser } from "../redux/userSlice";
 import { useHistory } from "react-router";
 import { setDoc, doc } from "firebase/firestore";
@@ -9,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import Loader from "./misc/loader";
 import { useSelector, useDispatch } from "react-redux";
 import { setInfo } from "../redux/infoSlice";
+import { useTitle } from "hooks/useTitle";
 
 const provider = new GoogleAuthProvider(auth);
 
@@ -18,6 +23,8 @@ const Login = () => {
     const history = useHistory();
     const { search } = useLocation();
     const user = useSelector((state) => state.user.userData);
+
+    useTitle("Pollo | login");
 
     const handleToggle = (event) => {
         localStorage.setItem("persistentLogin", event.target.checked);
@@ -44,12 +51,22 @@ const Login = () => {
                     FullName: result.user.displayName,
                     photoURL: result.user.photoURL,
                 }).then(() => {
-                    dispatch(setInfo({ infoText: "Successful login", infoType: "info" }));
+                    dispatch(
+                        setInfo({
+                            infoText: "Successful login",
+                            infoType: "info",
+                        })
+                    );
                     history.push(search.split("from=")[1] || "/");
                 });
             })
             .catch((error) => {
-                dispatch(setInfo({ infoType: "error", infoText: "Unsuccessful login" }));
+                dispatch(
+                    setInfo({
+                        infoType: "error",
+                        infoText: "Unsuccessful login",
+                    })
+                );
                 console.error(error.message);
             })
             .finally(() => setLoading(false));

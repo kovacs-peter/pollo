@@ -6,6 +6,7 @@ import Option from "./option";
 import { useCreatePoll } from "../../hooks/useCreatePoll";
 import Loader from "../misc/loader";
 import useValidate from "../../hooks/useValidation";
+import { useTitle } from "hooks/useTitle";
 
 const PollConfig = () => {
     const user = useSelector((state) => state.user.userData);
@@ -16,6 +17,8 @@ const PollConfig = () => {
     const [answers, setAnswers] = useState({ option0: "" });
     const [pollId, setPollId] = useState(null);
     const { mutate: createPoll, isLoading, isSuccess, data } = useCreatePoll();
+
+    useTitle("Pollo | create a poll");
 
     useEffect(() => {
         if (isSuccess) {
@@ -137,7 +140,11 @@ const PollConfig = () => {
                     </button>
                 </div>
             </div>
-            <button disabled={isLoading} onClick={handleSubmit} className="button submit">
+            <button
+                disabled={isLoading}
+                onClick={handleSubmit}
+                className="button submit"
+            >
                 {isLoading ? <Loader small /> : "SUMBIT POLL"}
             </button>
         </div>

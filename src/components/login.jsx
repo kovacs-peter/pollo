@@ -30,9 +30,8 @@ const Login = () => {
                 const json = JSON.stringify(result.user);
                 dispatch(setUser(JSON.parse(json)));
 
-                if (localStorage.getItem("persistentLogin") === "true")
-                    localStorage.setItem("user", json);
-                debugger;
+                localStorage.setItem("user", json);
+
                 setDoc(doc(firestore, "users", result.user.uid), {
                     uid: result.user.uid,
                     FullName: userNameRef.current.value,

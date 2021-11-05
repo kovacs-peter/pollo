@@ -81,18 +81,18 @@ const PollConfig = () => {
     if (pollId) return <LinkPage id={pollId} />;
     return (
         <div className="content">
-            <h1 className="header-text">
-                Create a poll
-                <span
+            <div>
+                <h1>Create a poll</h1>
+                <div
                     className={styles.lakat}
                     aria-label="Protect the poll with a password"
                     onClick={() => {
                         setPassNeeded((oldState) => !oldState);
                     }}
                 >
-                    {passNeeded ? "🔒" : "🔓"}
-                </span>
-            </h1>
+                    Protected Mode: {passNeeded ? "🔒" : "🔓"}
+                </div>
+            </div>
             <div className={styles.form}>
                 <label>
                     Question:

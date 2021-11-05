@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { auth } from "../api/firebase";
 import {
-    FacebookAuthProvider,
+    GoogleAuthProvider,
     signInWithRedirect,
     getRedirectResult,
 } from "firebase/auth";
@@ -15,7 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setInfo } from "../redux/infoSlice";
 import { useTitle } from "hooks/useTitle";
 
-const provider = new FacebookAuthProvider(auth);
+const provider = new GoogleAuthProvider(auth);
 
 const Login = () => {
     const [loading, setLoading] = useState(true);
@@ -31,6 +31,7 @@ const Login = () => {
     };
 
     useEffect(() => {
+        //setLoading(true);
         if (user?.userData) history.push(search.split("/"));
         getRedirectResult(auth)
             .then((result) => {
@@ -82,7 +83,7 @@ const Login = () => {
                         className={"button submit login"}
                         onClick={() => signInWithRedirect(auth, provider)}
                     >
-                        Login with facebook
+                        Login with google
                     </button>
                     <div
                         style={{

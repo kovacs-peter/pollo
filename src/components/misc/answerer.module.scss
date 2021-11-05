@@ -1,0 +1,22 @@
+.photo {
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.pill {
+    box-shadow: 5px 5px 10px #dfdfdf, inset -5px -5px 10px #ffffff;
+
+    height: 1.5rem;
+    width: fit-content;
+    font-size: 1.1rem;
+    padding: 0.2rem 0.5rem;
+    margin-top: 0.8rem;
+    margin-right: 0.5rem;
+    border-radius: 2rem;
+    display: inline-block;
+}

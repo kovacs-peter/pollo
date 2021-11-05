@@ -10,7 +10,7 @@
 }
 .pill {
     box-shadow: 5px 5px 10px #dfdfdf, inset -5px -5px 10px #ffffff;
-
+    -webkit-appearance: none;
     height: 1.5rem;
     width: fit-content;
     font-size: 1.1rem;

@@ -24,7 +24,7 @@ const PollList = () => {
                             <div>{poll.question}</div>
                             <div className={style.divider}></div>
                             <Link className={style.link} to={"/" + poll.uid}>
-                                {window.location.host}/{poll.uid}
+                                {window.location.host}/#/{poll.uid}
                             </Link>
                         </div>
                     ))}

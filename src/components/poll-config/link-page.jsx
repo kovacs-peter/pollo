@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 const LinkPage = ({ id }) => {
     const [clicked, setClicked] = useState(false);
-    const plloUrl = `${window.location.host}/${id}`;
+    const plloUrl = `${window.location.host}/#/${id}`;
     const handleClick = () => {
         navigator.clipboard.writeText(plloUrl);
         setClicked(true);

@@ -1,5 +1,5 @@
 import styles from "./style/poll-result.module.scss";
-import UserPhoto from "components/misc/user-photo";
+import Answerer from "components/misc/answerer";
 
 const PercentageDisplay = ({ optionText, answers, allAnswerCount }) => {
     const percentage = (answers.length / allAnswerCount) * 100;
@@ -15,7 +15,7 @@ const PercentageDisplay = ({ optionText, answers, allAnswerCount }) => {
                     ></div>
                 </div>
                 {answers.map((user) => (
-                    <UserPhoto key={user} user={user}></UserPhoto>
+                    <Answerer key={user} user={user}></Answerer>
                 ))}
             </div>
         </div>

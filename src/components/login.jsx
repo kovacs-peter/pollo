@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { auth } from "../api/firebase";
 import { signInAnonymously } from "firebase/auth";
 import { setUser } from "../redux/userSlice";
@@ -16,11 +16,19 @@ const Login = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { search } = useLocation();
-    const userNameRef = useRef();
-
+    const [userName, setUserName] = useState("");
     useTitle("Pollo | login");
 
     const handleSignIn = () => {
+        if (!userName) {
+            dispatch(
+                setInfo({
+                    infoType: "error",
+                    infoText: "Fill in your name",
+                })
+            );
+            return;
+        }
         signInAnonymously(auth)
             .then((result) => {
                 if (!result?.user) {
@@ -30,12 +38,10 @@ const Login = () => {
                 const json = JSON.stringify(result.user);
                 dispatch(setUser(JSON.parse(json)));
 
-                if (localStorage.getItem("persistentLogin") === "true")
-                    localStorage.setItem("user", json);
-                debugger;
+                localStorage.setItem("user", json);
                 setDoc(doc(firestore, "users", result.user.uid), {
                     uid: result.user.uid,
-                    FullName: userNameRef.current.value,
+                    FullName: userName,
                 }).then(() => {
                     dispatch(
                         setInfo({
@@ -65,12 +71,13 @@ const Login = () => {
             ) : (
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     <label>
-                        Choose a name:
+                        Choose a name to use:
                         <input
                             className="formInput"
+                            placeholder="John Doe"
                             type="text"
                             name="userName"
-                            ref={userNameRef}
+                            onChange={(e) => setUserName(e.target.value)}
                         />
                     </label>
                     <button

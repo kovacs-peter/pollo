@@ -87,9 +87,10 @@ const PollFill = () => {
                 <button
                     onClick={() => handleAnswer(false)}
                     disabled={!selectedOption}
-                    className={`button submit ${
-                        !selectedOption ? "disabled" : ""
-                    }`}
+                    className={
+                        `button submit ${!selectedOption ? "disabled" : " "} ` +
+                        styles.buttonOffset
+                    }
                 >
                     {mutationRunning ? <Loader small /> : "ANSWER"}
                 </button>

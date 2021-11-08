@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { auth } from "../api/firebase";
-import { signInAnonymously } from "firebase/auth";
-import { setUser } from "../redux/userSlice";
 import { useHistory } from "react-router";
+import { loginAnonymously } from "../api/firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { firestore } from "../api/firebase";
 import { useLocation } from "react-router-dom";
@@ -29,16 +27,8 @@ const Login = () => {
             );
             return;
         }
-        signInAnonymously(auth)
+        loginAnonymously()
             .then((result) => {
-                if (!result?.user) {
-                    setLoading(false);
-                    return;
-                }
-                const json = JSON.stringify(result.user);
-                dispatch(setUser(JSON.parse(json)));
-
-                localStorage.setItem("user", json);
                 setDoc(doc(firestore, "users", result.user.uid), {
                     uid: result.user.uid,
                     FullName: userName,

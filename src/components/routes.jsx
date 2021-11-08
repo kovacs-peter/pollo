@@ -11,6 +11,7 @@ import PollList from "./poll-list/poll-list";
 import PollFill from "./poll-display/poll-fill";
 import PollResults from "./poll-results/poll-results";
 import NotFound from "./misc/not-found";
+import { auth } from "api/firebase";
 
 const Routes = () => {
     const history = useHistory();
@@ -19,20 +20,23 @@ const Routes = () => {
 
     const user = useSelector((state) => state.user.userData);
     useEffect(() => {
-        if (user || pathname === "/login") return;
-        const userJSON = localStorage.getItem("user");
-        if (userJSON) {
-            dispatch(setUser(JSON.parse(userJSON)));
-        } else {
-            history.push(`/login?from=${pathname}`);
-        }
+        const unsubscribe = auth.onAuthStateChanged((userData) => {
+            if (userData) {
+                dispatch(setUser(JSON.parse(JSON.stringify(userData))));
+            } else {
+                history.push(`/login?from=${pathname}`);
+            }
+        });
+        return () => unsubscribe();
         // eslint-disable-next-line
-    }, [dispatch, user, history]);
+    }, []);
 
     return (
         <Layout user={user}>
             <Switch>
-                <Route path={"/login"} exact strict component={Login} />
+                {!user && (
+                    <Route path={"/login"} exact strict component={Login} />
+                )}
                 <Route path="/new" exact strict component={PollConfig} />
                 <Route path={"/:id"} exact component={PollFill} />
                 <Route
@@ -41,7 +45,7 @@ const Routes = () => {
                     strict
                     component={PollResults}
                 />
-                <Route path={"/"} exact strict component={PollList} />
+                <Route path={"/"} exact component={PollList} />
                 <Route component={NotFound} />
             </Switch>
         </Layout>

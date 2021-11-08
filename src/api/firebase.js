@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import {
+    getAuth,
+    browserLocalPersistence,
+    setPersistence,
+    signInAnonymously,
+} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -16,3 +21,8 @@ initializeApp(firebaseConfig);
 export const auth = getAuth();
 
 export const firestore = getFirestore();
+
+export const loginAnonymously = async () => {
+    await setPersistence(auth, browserLocalPersistence);
+    return signInAnonymously(auth);
+};

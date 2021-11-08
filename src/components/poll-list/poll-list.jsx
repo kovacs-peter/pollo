@@ -18,7 +18,7 @@ const PollList = () => {
         <div className="content">
             <h1 className="header-text">My polls</h1>
             <div className={style.flex}>
-                {pollList ? (
+                {pollList.length ? (
                     pollList.map((poll) => (
                         <div key={poll.uid} className={style.listItem}>
                             <div>{poll.question}</div>

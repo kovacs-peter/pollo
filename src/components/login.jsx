@@ -59,7 +59,14 @@ const Login = () => {
             {loading ? (
                 <Loader />
             ) : (
-                <div style={{ display: "flex", flexDirection: "column" }}>
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "calc(100% - 2rem)",
+                        gap: "1rem",
+                    }}
+                >
                     <label>
                         Choose a name to use:
                         <input

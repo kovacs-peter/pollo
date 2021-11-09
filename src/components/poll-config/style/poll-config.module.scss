@@ -7,3 +7,9 @@
 .form {
     flex-grow: 1;
 }
+.link {
+    cursor: "pointer";
+    :global(body.dark) & {
+        color: #fff;
+    }
+}

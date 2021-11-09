@@ -22,13 +22,16 @@
     border-radius: 50px;
     box-shadow: $light-shadow-lg;
     padding: 3em;
+    :global(body.dark) & {
+        box-shadow: $dark-shadow-lg;
+    }
     @media only screen and (max-width: 768px) {
         width: 90%;
         margin: 0;
         padding: 0rem;
         box-shadow: none;
-    }
-    :global(body.dark) & {
-        box-shadow: $dark-shadow-lg;
+        :global(body.dark) & {
+            box-shadow: none;
+        }
     }
 }

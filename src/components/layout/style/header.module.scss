@@ -29,9 +29,13 @@
     }
 }
 .headerItems {
+    align-items: center;
     display: flex;
     gap: 1rem;
     margin-right: 2rem;
+    @media only screen and (max-width: 768px) {
+        font-size: 0.9rem;
+    }
 }
 .link {
     text-decoration: none;

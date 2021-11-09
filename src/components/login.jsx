@@ -17,7 +17,8 @@ const Login = () => {
     const [userName, setUserName] = useState("");
     useTitle("Pollo | login");
 
-    const handleSignIn = () => {
+    const handleSignIn = (event) => {
+        event.preventDefault();
         if (!userName) {
             dispatch(
                 setInfo({
@@ -59,7 +60,8 @@ const Login = () => {
             {loading ? (
                 <Loader />
             ) : (
-                <div
+                <form
+                    onSubmit={handleSignIn}
                     style={{
                         display: "flex",
                         flexDirection: "column",
@@ -77,13 +79,10 @@ const Login = () => {
                             onChange={(e) => setUserName(e.target.value)}
                         />
                     </label>
-                    <button
-                        className={"button submit login"}
-                        onClick={handleSignIn}
-                    >
+                    <button type="submit" className={"button submit login"}>
                         Let's Go
                     </button>
-                </div>
+                </form>
             )}
         </div>
     );

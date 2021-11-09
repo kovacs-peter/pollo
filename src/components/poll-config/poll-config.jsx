@@ -27,9 +27,12 @@ const PollConfig = () => {
     }, [isSuccess, data]);
 
     const handleAdd = (event) => {
+        event.preventDefault();
         event.stopPropagation();
-
-        const num = Object.keys(answers).length;
+        const nums = Object.keys(answers).map(
+            (ansKey) => ansKey.match(/\d+$/)[0]
+        );
+        const num = Math.max(...nums) + 1;
         const option = `option${num}`;
         setAnswers({ ...answers, [option]: "" });
     };
@@ -40,7 +43,8 @@ const PollConfig = () => {
         setAnswers(modifyObject);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
         const options = Object.values(answers);
         const valid = validate([
             {
@@ -80,7 +84,7 @@ const PollConfig = () => {
 
     if (pollId) return <LinkPage id={pollId} />;
     return (
-        <div className="content">
+        <form className="content" onSubmit={handleSubmit}>
             <div>
                 <h1>Create a poll</h1>
                 <div
@@ -141,13 +145,13 @@ const PollConfig = () => {
                 </div>
             </div>
             <button
+                type="submit"
                 disabled={isLoading}
-                onClick={handleSubmit}
                 className="button submit"
             >
                 {isLoading ? <Loader small /> : "SUMBIT POLL"}
             </button>
-        </div>
+        </form>
     );
 };
 

@@ -29,7 +29,7 @@ const Header = () => {
                     </Link>
                 ))}
                 <div
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer", fontsize: "0.9rem" }}
                     onClick={() => dispatch(toggleTheme())}
                 >
                     {theme === "dark" ? "🌘" : "🌕"}

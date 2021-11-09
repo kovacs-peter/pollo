@@ -26,6 +26,10 @@ h1 {
     }
 }
 .formInput {
+    label & {
+        display: inline-block;
+        width: calc(100% - 2rem);
+    }
     -webkit-appearance: none;
     color: $light-text;
     font-weight: 200;
@@ -39,7 +43,6 @@ h1 {
     background: none;
     font-size: 1.4rem;
     border-radius: 1.5rem;
-    //background: #f8f8f8;
     box-shadow: $light-inset-shadow-sm;
     @media only screen and (max-width: 768px) {
         font-size: 1rem;

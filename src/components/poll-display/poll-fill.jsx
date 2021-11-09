@@ -5,6 +5,7 @@ import { usePoll } from "../../hooks/usePoll";
 import { useSelector } from "react-redux";
 import styles from "./style/poll-fill.module.scss";
 import { useTitle } from "hooks/useTitle";
+import MetaTags from "react-meta-tags";
 
 import Loader from "../misc/loader";
 import PollPassword from "./poll-password";
@@ -63,6 +64,12 @@ const PollFill = () => {
         );
     return (
         <div className="content">
+            <MetaTags>
+                <title>Page 1</title>
+                <meta name="description" content={poll.question} />
+                <meta property="og:title" content={`Pollo | fill out a poll`} />
+                <meta property="og:image" content="%PUBLIC_URL%/favicon.ico" />
+            </MetaTags>
             <div className={styles.form}>
                 <div>
                     <h1 className="header-text">{poll.question}</h1>

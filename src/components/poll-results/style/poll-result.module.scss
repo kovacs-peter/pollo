@@ -1,3 +1,5 @@
+@import "theme-variables";
+
 .title {
     width: 100%;
     margin-bottom: 3rem;
@@ -11,12 +13,17 @@
     height: 2rem;
     width: 100%;
     border-radius: 1rem;
-    background: #f8f8f8;
-    box-shadow: inset 5px 5px 10px #c4c4c4, inset -5px -5px 10px #ffffff;
+    box-shadow: $light-drop-shadow-sm;
+    :global(body.dark) & {
+        box-shadow: $dark-drop-shadow-sm;
+    }
 }
 .percentage {
     height: 2rem;
     border-radius: 1rem;
     background: linear-gradient(145deg, #00b60a, #009908);
-    box-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
+    box-shadow: $light-drop-shadow-sm;
+    :global(body.dark) & {
+        box-shadow: $dark-drop-shadow-sm;
+    }
 }

@@ -1,3 +1,5 @@
+@import "theme-variables";
+
 .form {
     flex-grow: 1;
 }
@@ -18,30 +20,52 @@
     width: 100%;
     height: 3rem;
     border-radius: 1.5rem;
-    background: #f8f8f8;
-    box-shadow: 8px 8px 17px #d3d3d3, -5px -5px 10px #ffffff;
-    // box-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
+    box-shadow: $light-drop-shadow-sm;
+    :global(body.dark) & {
+        box-shadow: $dark-drop-shadow-sm;
+    }
 }
 .optionCheckbox {
-    &:hover {
-        background: linear-gradient(145deg, #dfdfdf, #fff);
-    }
     cursor: pointer;
     align-items: center;
     justify-content: center;
     height: 3rem;
     min-width: 3rem;
     border-radius: 1.5rem;
-    background: linear-gradient(145deg, #fff, #dfdfdf);
-    box-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
+    background: linear-gradient(145deg, $light-inset-2, $light-inset-1);
+    box-shadow: $light-drop-shadow-sm;
+
+    &:hover {
+        background: linear-gradient(145deg, $light-inset-1, $light-inset-2);
+    }
+    :global(body.dark) & {
+        box-shadow: $dark-drop-shadow-sm;
+        background: linear-gradient(145deg, $dark-inset-2, $dark-inset-1);
+        &:hover {
+            background: linear-gradient(145deg, $dark-inset-1, $dark-inset-2);
+        }
+    }
 }
 .activeCheckbox {
     justify-content: center;
     height: 3rem;
     min-width: 3rem;
     border-radius: 1.5rem;
-    box-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
-    background: linear-gradient(145deg, #0ee7c3, #06caaa) !important;
+    box-shadow: $light-drop-shadow-sm;
+    background: linear-gradient(
+        145deg,
+        $light-selected-1,
+        $light-selected-2
+    ) !important;
+
+    :global(body.dark) & {
+        box-shadow: $dark-drop-shadow-sm;
+        background: linear-gradient(
+            145deg,
+            $dark-selected-1,
+            $dark-selected-2
+        ) !important;
+    }
 }
 
 .noAnswer {

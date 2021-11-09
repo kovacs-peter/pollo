@@ -1,13 +1,15 @@
+@import "theme-variables";
+
 .centerChildren {
     width: 100%;
-    min-height: fit-content;
     display: flex;
     flex-direction: column;
     padding: 3rem 0;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 6rem;
     @media only screen and (max-width: 768px) {
+        margin-top: 3rem;
         padding: 2rem 0 3rem 0;
     }
 }
@@ -18,13 +20,15 @@
     min-height: 30rem;
     border-radius: 2rem;
     border-radius: 50px;
-    background: #f8f8f8;
-    box-shadow: 8px 8px 17px #d3d3d3, -8px -8px 17px #ffffff;
+    box-shadow: $light-shadow-lg;
     padding: 3em;
     @media only screen and (max-width: 768px) {
         width: 90%;
         margin: 0;
         padding: 0rem;
         box-shadow: none;
+    }
+    :global(body.dark) & {
+        box-shadow: $dark-shadow-lg;
     }
 }

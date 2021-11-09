@@ -1,3 +1,5 @@
+@import "theme-variables";
+
 .photo {
     margin-top: 0.5rem;
     margin-right: 0.5rem;
@@ -9,7 +11,6 @@
     justify-content: center;
 }
 .pill {
-    box-shadow: 5px 5px 10px #dfdfdf, inset -5px -5px 10px #ffffff;
     -webkit-appearance: none;
     height: 1.5rem;
     width: fit-content;
@@ -19,4 +20,8 @@
     margin-right: 0.5rem;
     border-radius: 2rem;
     display: inline-block;
+    box-shadow: $light-drop-shadow-sm;
+    :global(body.dark) & {
+        box-shadow: $dark-drop-shadow-sm;
+    }
 }

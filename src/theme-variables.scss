@@ -1,0 +1,49 @@
+$light-bg: #f8f8f8;
+$light-text: #898f99;
+$ligh-sh-1: #d3d3d3;
+$ligh-sh-2: #fff;
+
+$light-inset-1: #c4c4c4;
+$light-inset-2: #fff;
+
+$light-drop-shadow-sm: 5px 5px 10px $ligh-sh-1, -5px -5px 10px $ligh-sh-1;
+$light-shadow-md: 5px 5px 15px $ligh-sh-1, -5px -5px 15px $ligh-sh-1;
+$light-shadow-lg: 8px 8px 17px $ligh-sh-1, -8px -8px 17px $ligh-sh-1;
+
+$light-inset-shadow-sm: inset 5px 5px 10px $light-inset-1,
+    inset -5px -5px 10px $light-inset-2;
+
+$light-add-button-1: #02e60d;
+$light-add-button-2: #00aa09;
+
+$light-submit-button-1: #0b42db;
+$light-submit-button-2: rgb(84, 94, 235);
+
+$light-selected-1: #0ee7c3;
+$light-selected-2: #06caaa;
+
+// ------------------ DARK ---------------
+
+$dark-bg: #464646;
+$dark-text: #dfdfdf;
+$dark-sh-1: #2c2c2c;
+$dark-sh-2: #555555;
+
+$dark-inset-1: #383838;
+$dark-inset-2: #555555;
+
+$dark-drop-shadow-sm: 5px 5px 10px $dark-sh-1, -5px -5px 10px $dark-sh-1;
+$dark-shadow-md: 5px 5px 15px $dark-sh-1, -5px -5px 15px $dark-sh-1;
+$dark-shadow-lg: 8px 8px 17px $dark-sh-1, -8px -8px 17px $dark-sh-1;
+
+$dark-inset-shadow-sm: inset 5px 5px 10px $dark-inset-1,
+    inset -5px -5px 10px $dark-inset-2;
+
+$dark-add-button-1: #008507;
+$dark-add-button-2: #005004;
+
+$dark-submit-button-1: #082c91;
+$dark-submit-button-2: rgb(50, 56, 148);
+
+$dark-selected-1: #16c9ab;
+$dark-selected-2: #05856f;

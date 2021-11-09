@@ -1,16 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;600&display=swap");
-html {
-    background-color: #f8f8f8;
-}
+@import "./theme-variables.scss";
+
 body {
     font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
-    color: #898f99;
+    background-color: $light-bg;
+    color: $light-text;
     font-size: 1.2rem;
     @media only screen and (max-width: 768px) {
         font-size: 1rem;
+    }
+    &.dark {
+        background-color: $dark-bg;
+        color: $dark-text;
     }
 }
 
@@ -24,12 +27,11 @@ h1 {
 }
 .formInput {
     -webkit-appearance: none;
-
-    color: #4c4e52;
+    color: $light-text;
     font-weight: 200;
     width: 95%;
     height: 3rem;
-    padding: 0 0.5rem;
+    padding: 0 1rem;
     margin-bottom: 1rem;
     margin-top: 0.5rem;
     border: none;
@@ -37,16 +39,17 @@ h1 {
     background: none;
     font-size: 1.4rem;
     border-radius: 1.5rem;
-    background: #f8f8f8;
-    box-shadow: inset 5px 5px 10px #c4c4c4, inset -5px -5px 10px #ffffff;
+    //background: #f8f8f8;
+    box-shadow: $light-inset-shadow-sm;
     @media only screen and (max-width: 768px) {
         font-size: 1rem;
-        &::placeholder {
-            font-size: 1rem;
-        }
     }
     &::placeholder {
         font-size: 1rem;
+    }
+    body.dark & {
+        color: $dark-text;
+        box-shadow: $dark-inset-shadow-sm;
     }
 }
 
@@ -60,30 +63,58 @@ h1 {
     font-weight: 300;
     font-size: 1.2rem;
     padding: 1rem;
-    box-shadow: 5px 5px 10px #d3d3d3, -5px -5px 10px #ffffff;
+    box-shadow: $light-drop-shadow-sm;
     text-decoration: none;
+    body.dark & {
+        box-shadow: $dark-drop-shadow-sm;
+    }
     &.add {
         font-weight: 700;
         width: 3rem;
         height: 3rem;
         padding: 0 1rem;
         margin: 0 0 3rem 0;
-        background: linear-gradient(145deg, #02e60d, #00aa09);
+        background: linear-gradient(
+            145deg,
+            $light-add-button-1,
+            $light-add-button-2
+        );
         &:hover {
-            background: linear-gradient(145deg, #00aa09, #02e60d);
+            background: linear-gradient(
+                145deg,
+                $light-add-button-2,
+                $light-add-button-1
+            );
+        }
+        body.dark & {
+            background: linear-gradient(
+                145deg,
+                $dark-add-button-1,
+                $dark-add-button-2
+            );
+            &:hover {
+                background: linear-gradient(
+                    145deg,
+                    $dark-add-button-2,
+                    $dark-add-button-1
+                );
+            }
         }
     }
+
     &.remove {
         position: relative;
         top: -4rem;
         margin-bottom: -4rem;
-        right: calc(-95% + 1.5rem);
+        right: calc(-95% + 1rem);
         font-weight: 300;
         width: 3rem;
         height: 3rem;
         padding: 0 1rem;
-        color: #898f99;
-        /* background: linear-gradient(145deg, #e62402, #aa1b01); */
+        color: $light-text;
+        body.dark & {
+            color: $dark-text;
+        }
     }
 
     &.submit {
@@ -103,10 +134,31 @@ h1 {
             align-self: inherit;
         }
         &:hover {
-            background: linear-gradient(145deg, rgb(84, 94, 235), #0b42db);
+            background: linear-gradient(
+                145deg,
+                $light-submit-button-1,
+                $light-submit-button-2
+            );
         }
-        box-shadow: 5px 5px 10px #b9b9b9, -5px -5px 10px #d4d4d4;
-        background: linear-gradient(145deg, rgb(92, 102, 255), #0c49f1);
+        background: linear-gradient(
+            145deg,
+            $light-submit-button-2,
+            $light-submit-button-1
+        );
+        body.dark & {
+            &:hover {
+                background: linear-gradient(
+                    145deg,
+                    $dark-submit-button-1,
+                    $dark-submit-button-2
+                );
+            }
+            background: linear-gradient(
+                145deg,
+                $dark-submit-button-2,
+                $dark-submit-button-1
+            );
+        }
         color: #fff;
         font-weight: 200;
         width: fit-content;

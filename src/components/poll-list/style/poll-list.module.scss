@@ -1,15 +1,21 @@
+@import "theme-variables";
+
 .listItem {
     margin-bottom: 2rem;
     padding: 2rem;
     border-radius: 1.5rem;
-    background: #f8f8f8;
-    box-shadow: 5px 5px 15px #cbcbcb, -5px -5px 15px #ffffff;
+    background: $light-bg;
+    box-shadow: $light-shadow-md;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 2rem;
     @media only screen and (max-width: 768px) {
         padding: 1rem;
+    }
+    :global(body.dark) & {
+        background-color: $dark-bg;
+        box-shadow: $dark-shadow-md;
     }
 }
 .divider {
@@ -22,6 +28,9 @@
 .link {
     white-space: pre-wrap;
     word-break: break-all;
+    :global(body.dark) & {
+        color: #fff;
+    }
 }
 .flex {
     flex-grow: 1;
